@@ -4,19 +4,32 @@ require 'open-uri'
 class AttachmentMagickTest < ActiveSupport::TestCase
   #FIXME Retirar essa class
   class Robocop
-    include AttachmentMagick
+    extend AttachmentMagick
   end
 
   def test_has_attachment_magick
     grids = Robocop.generate_grids
-    Robocop.has_attachment_magick :grid_1, :grid_5 => {:width => 120, :height => 240}, :grid_7 => {:height => 200}
+
+    Robocop.attachment_magick do
+      grid_1
+      grid_5 "120x240"
+      grid_7 :height => 200
+      grid_10 :height => 200, :width => 100
+    end
     
-    assert_equal Robocop.attachment_magick_default_options[:styles].keys,               [:grid_1, :grid_5, :grid_7]
-    assert_equal Robocop.attachment_magick_default_options[:styles][:grid_1][:width],   grids[:grid_1][:width]
-    assert_equal Robocop.attachment_magick_default_options[:styles][:grid_5][:width],   120
-    assert_equal Robocop.attachment_magick_default_options[:styles][:grid_5][:height],  240
-    assert_equal Robocop.attachment_magick_default_options[:styles][:grid_7][:width],   grids[:grid_7][:width]
-    assert_equal Robocop.attachment_magick_default_options[:styles][:grid_7][:height],  200
+    assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], Robocop.attachment_magick_default_options[:styles].keys
+
+    assert_equal grids[:grid_1][:width],                Robocop.attachment_magick_default_options[:styles][:grid_1][:width]
+    assert_equal grids[:grid_1][:height],               Robocop.attachment_magick_default_options[:styles][:grid_1][:height]
+
+    assert_equal 120,                                   Robocop.attachment_magick_default_options[:styles][:grid_5][:width]
+    assert_equal 240,                                   Robocop.attachment_magick_default_options[:styles][:grid_5][:height]
+
+    assert_equal grids[:grid_7][:width],                Robocop.attachment_magick_default_options[:styles][:grid_7][:width]
+    assert_equal 200,                                   Robocop.attachment_magick_default_options[:styles][:grid_7][:height]
+
+    assert_equal 100,                                   Robocop.attachment_magick_default_options[:styles][:grid_10][:width]
+    assert_equal 200,                                   Robocop.attachment_magick_default_options[:styles][:grid_10][:height]
   end
   
   #FIXME Valores das variáveis devem ser aleatórios
