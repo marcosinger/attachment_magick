@@ -24,5 +24,6 @@ module AttachmentMagick
 
     return hash
   end
+  private :generate_grids
 
 end

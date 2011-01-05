@@ -8,7 +8,7 @@ class AttachmentMagickTest < ActiveSupport::TestCase
   end
 
   def test_has_attachment_magick
-    grids = Robocop.generate_grids
+    grids = Robocop.send(:generate_grids)
 
     Robocop.attachment_magick do
       grid_1
@@ -39,7 +39,7 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     gutter        = 3
     
     grid_system = open("http://www.spry-soft.com/grids/grid/?column_width=#{column_width}&column_amount=#{column_amount}&gutter_width=#{gutter}") { |url| Hpricot(url) }
-    grids       = Robocop.generate_grids(column_amount, column_width, gutter)
+    grids       = Robocop.send(:generate_grids, column_amount, column_width, gutter)
     
     assert_equal grids.size, column_amount
     
