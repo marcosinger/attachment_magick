@@ -1,13 +1,8 @@
-# encoding: UTF-8
-require 'rubygems'
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
-end
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
-require 'rake'
-require 'rake/rdoctask'
+# require 'rake'
+# require 'rake/rdoctask'
 
 require 'rake/testtask'
 
@@ -20,10 +15,10 @@ end
 
 task :default => :test
 
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'AttachmentMagick'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.rdoc')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+# Rake::RDocTask.new(:rdoc) do |rdoc|
+#   rdoc.rdoc_dir = 'rdoc'
+#   rdoc.title    = 'GenericPages'
+#   rdoc.options << '--line-numbers' << '--inline-source'
+#   rdoc.rdoc_files.include('README.rdoc')
+#   rdoc.rdoc_files.include('lib/**/*.rb')
+# end
