@@ -15,15 +15,14 @@ module AttachmentMagick
   def generate_grids(column_amount=19, column_width=54, gutter=0, only=[])
     hash = {}
     grids_to_create = only.empty? ? 1.upto(column_amount) : only
-
+    
     grids_to_create.each do |key|
-      grid  = ("grid_" + key.to_s).to_sym
-      value = (key*column_width)+(gutter*(key-1))
-
-      hash.merge!( {grid => {:width => value}} )
+      grid  = ("grid_#{key}").to_sym
+      value = (key * column_width) + (gutter * (key - 1))
+      hash.merge!({grid => {:width => value}})
     end
 
-    hash
+    return hash
   end
 
 end
