@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     attachment_magick (0.0.1)
-      hpricot (>= 0.8.3)
 
 GEM
   remote: http://rubygems.org/
@@ -103,6 +102,6 @@ PLATFORMS
 DEPENDENCIES
   attachment_magick!
   capybara (>= 0.4.0)
-  hpricot (>= 0.8.3)
+  hpricot
   rails (= 3.0.3)
   sqlite3-ruby
