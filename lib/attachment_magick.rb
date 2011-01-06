@@ -4,7 +4,7 @@ module AttachmentMagick
   attr_accessor :attachment_magick_default_options
 
   def attachment_magick(&block)
-    self.embeds_many :images, :class_name => "Image"
+    embeds_many :images, :class_name => "Image"
     
     default_grids = generate_grids
     

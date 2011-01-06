@@ -1,6 +1,6 @@
 require 'test_helper'
 require 'open-uri'
-require 'app/models/attachment_magick/image'
+# require 'app/models/attachment_magick/image'
 
 class AttachmentMagickTest < ActiveSupport::TestCase
   #FIXME Retirar essa class
@@ -16,24 +16,24 @@ class AttachmentMagickTest < ActiveSupport::TestCase
 
     Robocop.attachment_magick do
       grid_1
-      grid_5 "120x240"
-      grid_7 :height => 200
+      grid_5  "120x240"
+      grid_7  :height => 200
       grid_10 :height => 200, :width => 100
     end
     
-    assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], order_array(Robocop.attachment_magick_default_options[:styles].keys)
+    assert_equal [:grid_1, :grid_5, :grid_7, :grid_10].sort, Robocop.attachment_magick_default_options[:styles].keys.sort
 
-    assert_equal grids[:grid_1][:width],                Robocop.attachment_magick_default_options[:styles][:grid_1][:width]
-    assert_equal grids[:grid_1][:height],               Robocop.attachment_magick_default_options[:styles][:grid_1][:height]
+    assert_equal grids[:grid_1][:width],  Robocop.attachment_magick_default_options[:styles][:grid_1][:width]
+    assert_equal grids[:grid_1][:height], Robocop.attachment_magick_default_options[:styles][:grid_1][:height]
 
-    assert_equal 120,                                   Robocop.attachment_magick_default_options[:styles][:grid_5][:width]
-    assert_equal 240,                                   Robocop.attachment_magick_default_options[:styles][:grid_5][:height]
+    assert_equal 120,                     Robocop.attachment_magick_default_options[:styles][:grid_5][:width]
+    assert_equal 240,                     Robocop.attachment_magick_default_options[:styles][:grid_5][:height]
 
-    assert_equal grids[:grid_7][:width],                Robocop.attachment_magick_default_options[:styles][:grid_7][:width]
-    assert_equal 200,                                   Robocop.attachment_magick_default_options[:styles][:grid_7][:height]
+    assert_equal grids[:grid_7][:width],  Robocop.attachment_magick_default_options[:styles][:grid_7][:width]
+    assert_equal 200,                     Robocop.attachment_magick_default_options[:styles][:grid_7][:height]
 
-    assert_equal 100,                                   Robocop.attachment_magick_default_options[:styles][:grid_10][:width]
-    assert_equal 200,                                   Robocop.attachment_magick_default_options[:styles][:grid_10][:height]
+    assert_equal 100,                     Robocop.attachment_magick_default_options[:styles][:grid_10][:width]
+    assert_equal 200,                     Robocop.attachment_magick_default_options[:styles][:grid_10][:height]
   end
   
   #FIXME Valores das variáveis devem ser aleatórios
@@ -50,11 +50,5 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     grids.keys.each do |key|
       assert_equal grids[key][:width],  grid_system.search(".#{key} p").first.inner_html.gsub(/\D/, "").to_i
     end  
-  end
-  
-  private
-  
-  def order_array(array)
-    array.sort{|x, y| x.to_s.split("_")[1].to_i <=> y.to_s.split("_")[1].to_i}
   end
 end
