@@ -1,14 +1,15 @@
+require "attachment_magick/dragonfly/dragonfly_mongo"
 require "attachment_magick/dsl"
+require "attachment_magick/image"
 
 module AttachmentMagick
   attr_accessor :attachment_magick_default_options
 
   def attachment_magick(&block)
-    embeds_many :images, :class_name => "Image"
+    embeds_many :images, :class_name => "AttachmentMagick::Image"
     
     default_grids = generate_grids
-    
-    map = DSL.new(self, default_grids)
+    map           = DSL.new(self, default_grids)
     map.instance_eval(&block)
     
     @attachment_magick_default_options = {:styles => map.styles || default_grids}
@@ -26,6 +27,7 @@ module AttachmentMagick
 
     return hash
   end
+  
   private :generate_grids
-
+  
 end
