@@ -1,10 +1,14 @@
 require 'test_helper'
 require 'open-uri'
+require 'app/models/attachment_magick/image'
 
 class AttachmentMagickTest < ActiveSupport::TestCase
   #FIXME Retirar essa class
   class Robocop
+    include Mongoid::Document
     extend AttachmentMagick
+    
+    embeds_many :images
   end
 
   def test_has_attachment_magick
@@ -17,7 +21,7 @@ class AttachmentMagickTest < ActiveSupport::TestCase
       grid_10 :height => 200, :width => 100
     end
     
-    assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], Robocop.attachment_magick_default_options[:styles].keys
+    assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], order_array(Robocop.attachment_magick_default_options[:styles].keys)
 
     assert_equal grids[:grid_1][:width],                Robocop.attachment_magick_default_options[:styles][:grid_1][:width]
     assert_equal grids[:grid_1][:height],               Robocop.attachment_magick_default_options[:styles][:grid_1][:height]
@@ -46,5 +50,11 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     grids.keys.each do |key|
       assert_equal grids[key][:width],  grid_system.search(".#{key} p").first.inner_html.gsub(/\D/, "").to_i
     end  
+  end
+  
+  private
+  
+  def order_array(array)
+    array.sort{|x, y| x.to_s.split("_")[1].to_i <=> y.to_s.split("_")[1].to_i}
   end
 end
