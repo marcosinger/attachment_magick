@@ -1,0 +1,7 @@
+<div>
+  <% @artists.each do |artist|%>
+    <p> <%=artist.name%> </p>
+    <p> <%=artist.lastname%> </p>
+    <%= image_tag artist.images.first.photo.thumb('800x200!').url %>
+  <%end%>
+</div>
