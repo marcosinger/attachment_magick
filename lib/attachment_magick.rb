@@ -13,6 +13,7 @@ module AttachmentMagick
     map.instance_eval(&block)
     
     @attachment_magick_default_options = {:styles => map.styles || default_grids}
+    grid_methods  
   end
 
   def generate_grids(column_amount=19, column_width=54, gutter=0, only=[])
@@ -28,6 +29,14 @@ module AttachmentMagick
     return hash
   end
   
-  private :generate_grids
+  def grid_methods
+    @attachment_magick_default_options[:styles].each do |key, value|
+      define_method "#{key.to_s}" do
+        return "#{value[:width]}x#{value[:height]}"
+      end
+    end
+  end
   
+  private :generate_grids
+  private :grid_methods
 end
