@@ -10,5 +10,7 @@ class Artist
     grid_10 :width => 150
     grid_15 "200x300"
     grid_16 :height => 230
+    thumb
+    fullscreen
   end
 end
