@@ -32,7 +32,10 @@ module AttachmentMagick
   def grid_methods
     @attachment_magick_default_options[:styles].each do |key, value|
       define_method "#{key.to_s}" do
-        return "#{value[:width]}x#{value[:height]}"
+        metric = "#{value[:width]}x#{value[:height]}"
+        metric = "#{metric}#" if value[:height]
+        
+        return metric
       end
     end
   end

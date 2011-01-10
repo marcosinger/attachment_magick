@@ -1,7 +1,6 @@
 <div>
   <% @artists.each do |artist|%>
-    <p> <%=artist.name%> </p>
-    <p> <%=artist.lastname%> </p>
+    <p> <%=artist.name%> <%=artist.lastname%></p>
     <%= image_tag artist.images.first.photo.thumb(artist.grid_1).url %>
     <%= image_tag artist.images.first.photo.thumb(artist.grid_10).url %>
     <%= image_tag artist.images.first.photo.thumb(artist.grid_15).url %>
