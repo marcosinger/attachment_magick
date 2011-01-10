@@ -53,6 +53,7 @@ GEM
     celerity (0.8.6)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
+    columnize (0.3.2)
     culerity (0.2.14)
     dragonfly (0.8.1)
       rack
@@ -63,6 +64,7 @@ GEM
     hpricot (0.8.3)
     i18n (0.4.2)
     json_pure (1.4.6)
+    linecache (0.43)
     mail (2.2.10)
       activesupport (>= 2.3.6)
       i18n (~> 0.4.1)
@@ -99,6 +101,12 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    redgreen (1.2.2)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
@@ -126,4 +134,6 @@ DEPENDENCIES
   mongoid (= 2.0.0.beta.20)
   rack-cache (>= 1.0)
   rails (= 3.0.3)
+  redgreen
+  ruby-debug
   sqlite3-ruby
