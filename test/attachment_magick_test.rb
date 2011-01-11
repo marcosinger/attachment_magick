@@ -11,7 +11,8 @@ class AttachmentMagickTest < ActiveSupport::TestCase
       grid_7  :height => 200
       grid_10 :height => 200, :width => 100
     end
-        
+    
+    
     assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], order_array(Artist.attachment_magick_default_options[:styles].keys)
 
     assert_equal grids[:grid_1][:width],  Artist.attachment_magick_default_options[:styles][:grid_1][:width]

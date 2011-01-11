@@ -54,7 +54,7 @@ module AttachmentMagick
     @attachment_magick_default_options[:styles].each do |key, value|
       define_method "#{key.to_s}" do
         metric = "#{value[:width]}x#{value[:height]}"
-        metric = "#{metric}#" if value[:height]
+        metric = "#{metric}#" if value[:height] && value[:crop] == true
         
         return metric
       end
