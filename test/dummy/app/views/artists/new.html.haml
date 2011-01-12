@@ -1,0 +1,9 @@
+.grid_13.tpush_2
+  -form_for @artist, :html => {:multipart => true} do |form|
+    =form.label :name
+    =form.text_field :name
+  
+    =form.label :lastname
+    =form.text_field :lastname
+    =file_field_tag "images[photo]"
+    =form.submit

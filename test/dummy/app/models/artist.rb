@@ -5,6 +5,8 @@ class Artist
   field :name
   field :lastname
   
+  validates_presence_of :name, :lastname
+  
   attachment_magick do
     grid_1
     grid_10 :width => 150

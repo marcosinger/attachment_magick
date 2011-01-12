@@ -1,0 +1,21 @@
+-@artists.each do |artist|
+  .grid_19.menu
+    .grid_2.alpha
+      %p
+        ="#{artist.name} #{artist.lastname}"
+    -unless artist.images.empty?
+      .grid_17.omega
+        %ul
+          -Artist.attachment_magick_default_options[:styles].keys.sort{|x, y| x.to_s <=> y.to_s}.each do |style|
+            %li.grid_2.rpush_2
+              = "[#{artist.send(style)}]"
+              = link_to "#{style}", "javascript://", :class => "open_attachment"
+  
+  .grid_19.tpush_2{:style => "overflow:hidden;"}
+    -artist.images.each do |image|
+      = image_tag image.photo.thumb(artist.thumb).url,    :class => "attachment-thumb hide"
+      = image_tag image.photo.thumb(artist.grid_1).url,   :class => "attachment-grid_1 hide"
+      = image_tag image.photo.thumb(artist.grid_10).url,  :class => "attachment-grid_10 hide"
+      = image_tag image.photo.thumb(artist.grid_15).url,  :class => "attachment-grid_15 hide"
+      = image_tag image.photo.thumb(artist.grid_16).url,  :class => "attachment-grid_16 hide"
+      = image_tag image.photo.thumb(artist.fullscreen).url,  :class => "attachment-fullscreen hide"

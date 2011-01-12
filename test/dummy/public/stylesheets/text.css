@@ -1,0 +1,13 @@
+body { font-size: 12px; line-height: 16px; font-family: Helvetica, Arial, Sans-serif; color:#000; }
+
+.header { left: 0px; top: 24px; background: #CCC; height: 44px; z-index: 0;}
+.header h4 { font-size: 12px; text-transform: uppercase; padding-left:10px; padding-top:15px;}
+
+a {color:#999;}
+a:link {text-decoration:none;}
+a:hover {color:#000;}
+
+ul {list-style: none;}
+ul li {float:left; margin-right:3px; text-align:center;color:#CCC;} 
+
+.hide {display:none;}

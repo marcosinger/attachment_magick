@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Dummy
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+    
+  %body
+    .container_19
+      .pre-header
+        %h1
+          = link_to "Attachment Magick", artists_path
+      .header
+        %h4
+          = link_to "Novo Artista", new_artist_path
+      = yield
