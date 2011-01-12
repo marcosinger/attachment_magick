@@ -46,6 +46,8 @@ var attach = {
 		var image 				= $container_images.find(".attachment-"+style);
 		var image_to_show 		= image.clone();
 		
+		$('li.grid_2.rpush_2').removeClass('active');
+		$el.parent().toggleClass('active');
 		image.remove();
 		$container_images.append(image_to_show);
 		

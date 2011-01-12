@@ -9,5 +9,5 @@ a:hover {color:#000;}
 
 ul {list-style: none;}
 ul li {float:left; margin-right:3px; text-align:center;color:#CCC;} 
-
+ul li.active{background: #CCC; color:#FFF;}
 .hide {display:none;}
