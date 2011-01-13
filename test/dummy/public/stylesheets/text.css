@@ -11,3 +11,12 @@ ul {list-style: none;}
 ul li {float:left; margin-right:3px; text-align:center;color:#CCC;} 
 ul li.active{background: #CCC; color:#FFF;}
 .hide {display:none;}
+
+/*Outro arquivo de Css*/
+.thumbnails{margin-top:5px;}
+.thumbnails h4{margin:15px 0px 15px 0px; border-top:2px solid #CCC;}
+.attach_image {border-bottom: 1px solid #CCC; margin:15px 0px 0px 0px;clear:left;}
+.attach_image:hover {background:#EEE;}
+
+.attach_image p {margin: 0px; }
+.attach_image a {float: right; }

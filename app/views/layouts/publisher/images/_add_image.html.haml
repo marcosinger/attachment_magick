@@ -1,0 +1,10 @@
+.grid_5.attach_image
+  .grid_3.alpha
+    = image_tag image.photo.thumb(size).url
+    %input{:id => "image_id", :type => "hidden", :value => image.id}
+    
+  .grid_2.omega
+    %p
+      = link_to "remover", "javascript://", :class => "remove_image"
+      %br
+      = link_to "ver original", image.photo.url, :target => "blank"

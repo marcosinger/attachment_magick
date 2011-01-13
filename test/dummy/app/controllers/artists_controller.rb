@@ -7,12 +7,15 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
   end
   
+  def edit
+    @artist = Artist.find(params[:id])
+  end
+  
   def create
     @artist = Artist.new(params[:artist])
-    @artist.images.create(params[:images])
     @artist.save
     
-    redirect_to artists_path
+    redirect_to edit_artist_path(@artist)
   end
   
   def destroy

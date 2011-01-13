@@ -2,7 +2,7 @@
   .grid_19.menu
     .grid_2.alpha
       %p
-        ="#{artist.name} #{artist.lastname}"
+        = link_to "#{artist.name} #{artist.lastname}", edit_artist_path(artist)
     -unless artist.images.empty?
       .grid_16
         %ul
