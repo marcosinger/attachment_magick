@@ -7,20 +7,4 @@
     =form.text_field :lastname
     =form.submit
     
-    -#FIXME Verificar a inclusão do Helper (está em ArtistsHelper e não em Publisher::ImagesHelper)
     = attachment_for(@artist)
-    / 
-    / -unless @artist.new_record?
-    /   .thumbnails.grid_5.alpha
-    /     %h4 Imagens
-    /     #attachmentProgressContainer.grid_5.alpha
-    /     %span#attachmentButton.grid_1.omega
-    /     
-    /     .list_images
-    /       -@artist.images.each do |image|
-    /         = render :partial => "layouts/publisher/images/add_image", :locals => { :image => image, :size => @artist.grid_10 }
-    / 
-    /     %input{:id => "klass",    :type => "hidden", :value => @artist.class.name}
-    /     %input{:id => "klass_id", :type => "hidden", :value => @artist.id}
-    / 
-    / 

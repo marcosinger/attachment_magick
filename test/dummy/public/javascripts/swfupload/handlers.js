@@ -4,14 +4,17 @@ $(document).ready(function() {
 
 var attachmentMagick = {
   startup: function(){
-    this.klass    = $('#klass').val();
-    this.klass_id = $('#klass_id').val();
+    this.klass            = $('#klass').val();
+    this.klass_id         = $('#klass_id').val();
+    this.elementSortable  = $("#attachmentSortable");
     
     if ( $('#attachmentProgressContainer:first') ) { attachmentMagick.prepareImageUpload( this.klass, this.klass_id ); }
-    $('.remove_image').click(function(){ attachmentMagick.removeImage( $(this) ); });
+    $('.remove_image').live('click', function(){ attachmentMagick.removeImage( $(this) ); });
+    this.elementSortable.sortable({ update: function(event, ui){ attachmentMagick.updateImageList(); }});
+  
   },
   removeImage: function(el){
-    var $attach_image = el.parents('.attach_image')
+    var $attach_image = el.parents('.attachment_magick_image')
     var $image        = $attach_image.find("img:first");
     var image_id      = $attach_image.find("input[type='hidden']:first").val();
     var url_path      = "/publisher/images/"+image_id+"/"+this.klass+"/"+this.klass_id
@@ -21,9 +24,25 @@ var attachmentMagick = {
 	    url:  url_path, 
 	    
 	    success: function(data){  
-	      $image.fadeOut(250, function(){ $(this).parents('.attach_image').remove(); })
+	      $image.fadeOut(250, function(){ $(this).parents('.attachment_magick_image').remove(); })
 	    }
 		});
+  },
+  updateImageList: function(){
+    var sort  = this.elementSortable.sortable('toArray');
+    var array = new Array();
+    
+    for( var i = 0; i < sort.length; i++ ){ array.push( sort[i].split('_').pop() ); };
+
+  	$.ajax({
+  	   type: "POST",
+  	   url: "/publisher/images/update_sortable",
+  	   data: {images: array, klass: this.klass, klass_id: this.klass_id},
+  	   
+  	   error: function(XMLHttpRequest, message){
+  	     console.log(XMLHttpRequest.responseText);
+  	   }
+  	 });
   },
   prepareImageUpload: function(type, id){
   	var swfu = new SWFUpload({
@@ -200,6 +219,7 @@ function uploadError(file, errorCode, message) {
 
 function addImagePublisher(serverData){
 	$('.thumbnails:first .list_images:first').prepend(serverData).find("img:last");
+	attachmentmagick.updateImageList();
 }
 
 function addImage(src) {

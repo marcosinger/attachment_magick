@@ -2,21 +2,40 @@ class Publisher::ImagesController < ActionController::Base
   protect_from_forgery  :except => :create
   respond_to            :html, :js
   
-  #TODO Criar um befor_filter aqui para carregar a variavel @klass
+  before_filter :load_klass
+  
   def create
-    klass   = params[:klass].capitalize.constantize
-    @klass  = klass.find(params[:klass_id])
-    @image  = @klass.images.create(:photo => params[:Filedata])
-    
+    @image = @klass.images.create(:photo => params[:Filedata])
     @klass.save
-    render :partial => "layouts/publisher/images/add_image", :locals => { :image => @image, :size => @klass.grid_10 }
+    
+    render :partial => "layouts/publisher/images/add_image", :collection => [@image], :locals => { :size => @klass.grid_10, :count => @image.imageable.images.count - 1 }
+  end
+  
+  def update_sortable
+    array_ids = params[:images]
+    hash      = {}
+    
+    array_ids.reverse.each_with_index do |id, index|
+      hash.merge!( {"#{index}" => {"id" => "#{id}", "priority" => "#{index}"}} )
+    end
+
+    @klass.images_attributes = hash
+    @klass.save
+    
+    respond_to do |format|
+      format.js{render :text => "ok"}
+    end
   end
   
   def destroy
-    klass   = params[:klass].capitalize.constantize
-    @klass  = klass.find(params[:klass_id])
-    
     @klass.images.find(params[:id]).destroy
     render :text => "ok"
+  end
+  
+  private
+  
+  def load_klass
+    klass   = params[:klass].capitalize.constantize
+    @klass  = klass.find(params[:klass_id])
   end
 end

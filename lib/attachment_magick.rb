@@ -1,9 +1,10 @@
 require "attachment_magick/configuration/configuration"
 require "attachment_magick/dragonfly/dragonfly_mongo"
 require "attachment_magick/dsl"
-require "attachment_magick/image"
+#require "attachment_magick/image"
+require File.join(File.dirname(__FILE__), '..', 'app', "helpers", "application_helper.rb")
 
-%w{ controllers helpers }.each do |dir|
+%w{ controllers models }.each do |dir|
   path = File.join(File.dirname(__FILE__), '..', 'app', dir)
   $LOAD_PATH << path
   ActiveSupport::Dependencies.autoload_paths << path
@@ -11,7 +12,6 @@ require "attachment_magick/image"
 end
 
 ActionController::Base.view_paths   = ["app/views", File.join(File.dirname(__FILE__), '..', 'app', 'views')]
-ActionController::Base.helpers_path = ["app/views", File.join(File.dirname(__FILE__), '..', 'app', 'helpers')]
 
 module AttachmentMagick
   attr_accessor :attachment_magick_default_options
@@ -26,8 +26,9 @@ module AttachmentMagick
   end
   
   def attachment_magick(&block)
-    embeds_many :images, :class_name => "AttachmentMagick::Image"
-    
+    embeds_many                   :images, :class_name => "AttachmentMagick::Image"
+    accepts_nested_attributes_for :images
+     
     default_grids = generate_grids
     map           = DSL.new(self, default_grids)
     map.instance_eval(&block)

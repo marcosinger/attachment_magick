@@ -1,10 +1,16 @@
-.grid_5.attach_image
+- count = count || add_image_counter
+.grid_5[add_image]
   .grid_3.alpha
-    = image_tag image.photo.thumb(size).url
-    %input{:id => "image_id", :type => "hidden", :value => image.id}
+    = image_tag add_image.photo.thumb(size).url
+    %input{:id => "image_id", :type => "hidden", :value => add_image.id}
     
   .grid_2.omega
     %p
       = link_to "remover", "javascript://", :class => "remove_image"
       %br
-      = link_to "ver original", image.photo.url, :target => "blank"
+      = link_to "ver original", add_image.photo.url, :target => "blank"
+
+  .grid_5.alpha.omega
+    %label LEGENDA
+    = text_field_tag "#{add_image.imageable.class.name.downcase}[images_attributes][#{count}][caption]", add_image.caption
+    = hidden_field_tag "#{add_image.imageable.class.name.downcase}[images_attributes][#{count}][id]", add_image.id

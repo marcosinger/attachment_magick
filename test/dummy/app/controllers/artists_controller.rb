@@ -18,6 +18,13 @@ class ArtistsController < ApplicationController
     redirect_to edit_artist_path(@artist)
   end
   
+  def update
+    @artist = Artist.find(params[:id])
+    @artist.update_attributes(params[:artist])
+    
+    redirect_to edit_artist_path(@artist)
+  end
+  
   def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
