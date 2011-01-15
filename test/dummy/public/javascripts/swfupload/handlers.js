@@ -8,7 +8,7 @@ var attachmentMagick = {
     this.klass_id         = $('#klass_id').val();
     this.elementSortable  = $("#attachmentSortable");
     
-    if ( $('#attachmentProgressContainer:first') ) { attachmentMagick.prepareImageUpload( this.klass, this.klass_id ); }
+    if ( $('#attachmentProgressContainer') ) { attachmentMagick.prepareImageUpload( this.klass, this.klass_id ); }
     $('.remove_image').live('click', function(){ attachmentMagick.removeImage( $(this) ); });
     this.elementSortable.sortable({ update: function(event, ui){ attachmentMagick.updateImageList(); }});
   
@@ -33,7 +33,7 @@ var attachmentMagick = {
     var array = new Array();
     
     for( var i = 0; i < sort.length; i++ ){ array.push( sort[i].split('_').pop() ); };
-				
+		
   	$.ajax({
   	   type: "POST",
   	   url: "/publisher/images/update_sortable",
@@ -214,8 +214,8 @@ function uploadError(file, errorCode, message) {
 }
 
 function addImagePublisher(serverData){
-	$('.thumbnails:first .list_images:first').prepend(serverData).find("img:last");
-	attachmentmagick.updateImageList();
+	$('.thumbnails:first .list_images:first').prepend(serverData);
+	attachmentMagick.updateImageList();
 }
 
 function addImage(src) {
