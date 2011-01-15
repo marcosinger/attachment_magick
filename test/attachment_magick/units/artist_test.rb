@@ -1,7 +1,6 @@
-require 'test_helper'
+require File.join(File.dirname(__FILE__), '..', '..', 'test_helper')
  
-class ArtistTest < ActiveSupport::TestCase
-  
+class ArtistTest < ActiveSupport::TestCase  
   setup do
     @rocky_balboa = Artist.new
   end

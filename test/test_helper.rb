@@ -15,8 +15,49 @@ require "capybara/rails"
 Capybara.default_driver   = :rack_test
 Capybara.default_selector = :css
 
-# Run any available migration
-#ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
-
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
+
+class ActionController::TestCase
+  def assert_element_in(target, match)
+    target = Hpricot(target)
+    assert !target.search(match.to_s).empty?
+  end
+  
+  def create_artist(options={})
+    default_options = {:name => "Johnny", :lastname => "Depp"}
+    default_options.merge!(options)
+    
+    @artist = Artist.create(default_options)
+    @artist.images.create(:photo => exemple_file)
+    
+    @artist
+  end
+
+  def exemple_file
+    File.join(File.dirname(__FILE__), 'dummy/public/images/little_girl.jpg')
+  end
+end
+
+#FIXME Nada DRY!
+class ActionView::TestCase
+  def assert_element_in(target, match)
+    target = Hpricot(target)
+    assert !target.search(match.to_s).empty?
+  end
+  
+  def create_artist(options={})
+    default_options = {:name => "Johnny", :lastname => "Depp"}
+    default_options.merge!(options)
+    
+    @artist = Artist.create(default_options)
+    @artist.images.create(:photo => exemple_file)
+    
+    @artist
+  end
+
+  def exemple_file
+    File.join(File.dirname(__FILE__), 'dummy/public/images/little_girl.jpg')
+  end
+end
