@@ -18,6 +18,9 @@ Capybara.default_selector = :css
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
+# For generators
+require "rails/generators/test_case"
+require "generators/attachment_magick/install_generator"
 
 class ActionController::TestCase
   def assert_element_in(target, match)
