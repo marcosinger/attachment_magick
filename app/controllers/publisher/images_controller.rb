@@ -15,23 +15,21 @@ class Publisher::ImagesController < ActionController::Base
     array_ids = params[:images]
     hash      = {}
     
-    array_ids.reverse.each_with_index do |id, index|
-      hash.merge!( {"#{index}" => {"id" => "#{id}", "priority" => "#{index}"}} )
+    array_ids.each_with_index do |id, index|
+      hash.merge!( {"#{id}" => {"id" => "#{id}", "priority" => "#{index}"}} )
     end
 
     @klass.images_attributes = hash
     @klass.save
     
-    respond_to do |format|
-      format.js{render :text => "ok"}
-    end
+    render :text => "ok"
   end
   
   def destroy
     @klass.images.find(params[:id]).destroy
     render :text => "ok"
   end
-  
+    
   private
   
   def load_klass

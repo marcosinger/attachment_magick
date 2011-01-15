@@ -4,7 +4,7 @@ module AttachmentMagick
 
     field           :photo_uid
     field           :caption
-    field           :priority, :type => Integer
+    field           :priority
     image_accessor  :photo
     embedded_in     :imageable, :inverse_of => :image
   end

@@ -33,15 +33,11 @@ var attachmentMagick = {
     var array = new Array();
     
     for( var i = 0; i < sort.length; i++ ){ array.push( sort[i].split('_').pop() ); };
-
+				
   	$.ajax({
   	   type: "POST",
   	   url: "/publisher/images/update_sortable",
-  	   data: {images: array, klass: this.klass, klass_id: this.klass_id},
-  	   
-  	   error: function(XMLHttpRequest, message){
-  	     console.log(XMLHttpRequest.responseText);
-  	   }
+  	   data: {images: array, klass: this.klass, klass_id: this.klass_id}
   	 });
   },
   prepareImageUpload: function(type, id){
