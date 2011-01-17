@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', '..', 'test_helper')
+require File.expand_path('../../../test_helper', __FILE__)
 
 class Publisher::ImagesControllerTest < ActionController::TestCase
 
@@ -8,7 +8,6 @@ class Publisher::ImagesControllerTest < ActionController::TestCase
 
   test "should create image" do
     post :create, default_hash.merge({ :Filedata => exemple_file }) 
-
     assert_response :success
     assert_element_in(response.body, :img)
   end

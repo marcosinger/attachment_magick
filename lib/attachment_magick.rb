@@ -1,17 +1,16 @@
 require "attachment_magick/configuration/configuration"
 require "attachment_magick/dragonfly/dragonfly_mongo"
 require "attachment_magick/dsl"
-#require "attachment_magick/image"
-require File.join(File.dirname(__FILE__), '..', 'app', "helpers", "application_helper.rb")
+require File.expand_path('../../app/helpers/application_helper', __FILE__)
 
 %w{ controllers models }.each do |dir|
-  path = File.join(File.dirname(__FILE__), '..', 'app', dir)
+  path = File.expand_path("../../app/#{dir}", __FILE__)
   $LOAD_PATH << path
   ActiveSupport::Dependencies.autoload_paths << path
   ActiveSupport::Dependencies.autoload_once_paths.delete(path)
 end
 
-ActionController::Base.view_paths   = ["app/views", File.join(File.dirname(__FILE__), '..', 'app', 'views')]
+ActionController::Base.view_paths   = ["app/views", File.expand_path('../../app/views', __FILE__)]
 
 module AttachmentMagick
   attr_accessor :attachment_magick_default_options

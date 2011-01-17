@@ -1,11 +1,15 @@
-require File.join(File.dirname(__FILE__), '..', '..', 'test_helper')
+require File.expand_path('../../../test_helper', __FILE__)
 
 class InstallGeneratorTest < Rails::Generators::TestCase
   tests       AttachmentMagick::Generators::InstallGenerator
   destination File.expand_path("../../tmp", __FILE__)
-  setup       :prepare_destination
 
-  test "Assert all files are properly created" do
+  setup do
+    prepare_destination
+    create_route_file
+  end
+
+  test "Assert all files are properly created" do    
     run_generator
     
     assert_file "public/javascripts/swfupload/handlers.js"
@@ -13,5 +17,18 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     assert_file "public/javascripts/swfupload/swfupload.swf"
     assert_file "public/stylesheets/swfupload.css"
     assert_file "public/stylesheets/attachment_magick.css"
+    
+    assert_file "config/routes.rb" do |route|
+      assert_match /'publisher\/images#create'/,          route
+      assert_match /'publisher\/images#update_sortable'/, route
+      assert_match /'publisher\/images#destroy'/,         route
+    end
+  end
+  
+  private
+  
+  def create_route_file
+    mkdir     File.join(InstallGeneratorTest.destination_root, 'config')
+    copy_file File.join(InstallGeneratorTest.destination_root, '../../dummy/config/routes.rb'), File.join(InstallGeneratorTest.destination_root, 'config/routes.rb')
   end
 end

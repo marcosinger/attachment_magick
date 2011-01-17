@@ -5,9 +5,9 @@ module AttachmentMagick
 
       def copy_initializer
         directory "public/"
-        #create_file "swfupload/handlers.js",    "public/javascripts/swfupload/handlers.js"
-        #create_file "swfupload/swfupload.js",   "public/javascripts/swfupload/swfupload.js"
-        #create_file "swfupload/swfupload.swf",  "public/javascripts/swfupload/swfupload.swf"
+        route "post 'publisher/images', :to => 'publisher/images#create'"
+        route "post 'publisher/images/update_sortable', :to => 'publisher/images#update_sortable'"
+        route "delete 'publisher/images/:id/:klass/:klass_id',  :to => 'publisher/images#destroy'"
       end
     end
   end

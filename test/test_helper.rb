@@ -39,7 +39,7 @@ class ActionController::TestCase
   end
 
   def exemple_file
-    File.join(File.dirname(__FILE__), 'dummy/public/images/little_girl.jpg')
+    File.expand_path('../dummy/public/images/little_girl.jpg', __FILE__)
   end
 end
 
@@ -61,6 +61,6 @@ class ActionView::TestCase
   end
 
   def exemple_file
-    File.join(File.dirname(__FILE__), 'dummy/public/images/little_girl.jpg')
+    File.expand_path('../dummy/public/images/little_girl.jpg', __FILE__)
   end
 end
