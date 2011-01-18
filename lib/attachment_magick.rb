@@ -1,6 +1,7 @@
 require "attachment_magick/configuration/configuration"
 require "attachment_magick/dragonfly/dragonfly_mongo"
 require "attachment_magick/dsl"
+require File.expand_path('../../app/helpers/application_helper', __FILE__)
 
 %w{ controllers models }.each do |dir|
   path = File.expand_path("../../app/#{dir}", __FILE__)
@@ -35,7 +36,7 @@ module AttachmentMagick
     grid_methods  
   end
 
-  def generate_grids(column_amount=19, column_width=54, gutter=0, only=[])
+  def generate_grids(column_amount=AttachmentMagick.configuration.columns_amount, column_width=AttachmentMagick.configuration.columns_width, gutter=AttachmentMagick.configuration.gutter, only=[])
     hash = {}
     grids_to_create = only.empty? ? 1.upto(column_amount) : only
     
@@ -45,17 +46,19 @@ module AttachmentMagick
       hash.merge!({grid => {:width => value}})
     end
     
-    AttachmentMagick.configuration.custom_styles.styles.each do |key, value|
-      option = value
-      if value.is_a?(String)
-        width, height = value.split("x")
-        option        = {:width => width.to_i}
-        option.merge!({:height => height.to_i}) if height
-      end
+    unless AttachmentMagick.configuration.custom_styles.styles.empty?
+      AttachmentMagick.configuration.custom_styles.styles.each do |key, value|
+        option = value
+        if value.is_a?(String)
+          width, height = value.split("x")
+          option        = {:width => width.to_i}
+          option.merge!({:height => height.to_i}) if height
+        end
       
-      hash.merge!({key.to_sym => option})
+        hash.merge!({key.to_sym => option})
+      end
     end
-
+    
     return hash
   end
   

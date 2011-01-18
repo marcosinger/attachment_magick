@@ -6,5 +6,6 @@ AttachmentMagick.setup do |config|
   config.custom_styles do
     thumb      "36x36"
     fullscreen :width => 1024
+    publisher "54x"
   end
 end

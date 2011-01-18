@@ -14,5 +14,6 @@ class Artist
     grid_16 :height => 230
     thumb   :crop => false
     fullscreen
+    publisher 
   end
 end

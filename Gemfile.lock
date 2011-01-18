@@ -4,6 +4,7 @@ PATH
     attachment_magick (0.0.1)
       bson_ext (= 1.1.5)
       dragonfly (>= 0.8.1)
+      haml (>= 3.0.24)
       mongoid (= 2.0.0.beta.20)
       rack-cache (>= 1.0)
 
@@ -135,7 +136,7 @@ DEPENDENCIES
   bson_ext (= 1.1.5)
   capybara (>= 0.4.0)
   dragonfly (>= 0.8.1)
-  haml
+  haml (>= 3.0.24)
   hpricot
   jquery-rails
   mongoid (= 2.0.0.beta.20)

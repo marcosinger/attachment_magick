@@ -10,7 +10,7 @@ module ApplicationHelper
         <span id='attachmentButton' class='grid_1 omega'></span>
       }
 
-      images << "#{render :partial => "layouts/publisher/images/add_image", :collection => klass.images.order_by(:priority.asc), :as =>:image, :locals => {:size => klass.grid_10}}"
+      images << "#{render :partial => "layouts/publisher/images/add_image", :collection => klass.images.order_by(:priority.asc), :as =>:image, :locals => {:size => klass.publisher}}"
       footer = %{ 
         </div>
         <input id="klass" type="hidden" value= #{klass.class.name}> <input id="klass_id" type="hidden" value= #{klass.id}>

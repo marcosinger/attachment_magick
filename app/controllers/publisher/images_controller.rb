@@ -8,7 +8,7 @@ class Publisher::ImagesController < ActionController::Base
     @image = @klass.images.create(:photo => params[:Filedata])
     @klass.save
     
-    render :partial => "layouts/publisher/images/add_image", :collection => [@image], :as => :image, :locals => { :size => @klass.grid_10 }
+    render :partial => "layouts/publisher/images/add_image", :collection => [@image], :as => :image, :locals => { :size => @klass.publisher }
   end
   
   def update_sortable

@@ -8,7 +8,7 @@ gem 'hpricot'
 gem 'redgreen',   :platforms => :ruby_18
 gem 'ruby-debug', :platforms => :ruby_18
 gem 'rcov'
-gem 'haml'
+gem 'haml', '>= 3.0.24'
 gem 'jquery-rails'
 # Specify your gem's dependencies in attachment_magick.gemspec
 gemspec
