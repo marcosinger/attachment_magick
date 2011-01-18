@@ -1,7 +1,6 @@
 require "attachment_magick/configuration/configuration"
 require "attachment_magick/dragonfly/dragonfly_mongo"
 require "attachment_magick/dsl"
-require File.expand_path('../../app/helpers/application_helper', __FILE__)
 
 %w{ controllers models }.each do |dir|
   path = File.expand_path("../../app/#{dir}", __FILE__)

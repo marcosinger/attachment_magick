@@ -1,4 +1,5 @@
 require File.expand_path('../../../test_helper', __FILE__)
+require File.expand_path('../../../../app/helpers/application_helper', __FILE__)
 
 class ApplicationHelperTest < ActionView::TestCase
   setup do
