@@ -1,5 +1,4 @@
 module ApplicationHelper
-  #FIXME Melhorar a abordagem e passar para o Publisher::ImagesHelper.attachment_for
   def attachment_for(klass)
     unless klass.new_record?
       images = "<div id ='attachmentSortable' class='list_images'>"

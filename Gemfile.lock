@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     attachment_magick (0.0.1)
-      bson_ext (= 1.1.5)
+      bson_ext (= 1.2.0)
       dragonfly (>= 0.8.1)
       haml (>= 3.0.24)
-      mongoid (= 2.0.0.beta.20)
+      mongoid (= 2.0.0.rc.6)
       rack-cache (>= 1.0)
 
 GEM
@@ -39,8 +39,8 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.4)
-    bson (1.1.5)
-    bson_ext (1.1.5)
+    bson (1.2.0)
+    bson_ext (1.2.0)
     builder (2.1.2)
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -76,11 +76,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mongo (1.1.5)
-      bson (>= 1.1.5)
-    mongoid (2.0.0.beta.20)
+    mongo (1.2.0)
+      bson (>= 1.2.0)
+    mongoid (2.0.0.rc.6)
       activemodel (~> 3.0)
-      mongo (~> 1.1)
+      mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.3.1)
@@ -133,13 +133,13 @@ PLATFORMS
 
 DEPENDENCIES
   attachment_magick!
-  bson_ext (= 1.1.5)
+  bson_ext (= 1.2.0)
   capybara (>= 0.4.0)
   dragonfly (>= 0.8.1)
   haml (>= 3.0.24)
   hpricot
   jquery-rails
-  mongoid (= 2.0.0.beta.20)
+  mongoid (= 2.0.0.rc.6)
   rack-cache (>= 1.0)
   rails (= 3.0.3)
   rcov

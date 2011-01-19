@@ -11,5 +11,5 @@
 
   .grid_5.alpha.omega
     %label LEGENDA
-    = text_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][caption]", image.caption
-    = hidden_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][id]", image.id
+    = text_field_tag "#{image._parent.class.name.downcase}[images_attributes][#{image.id}][caption]", image.caption
+    = hidden_field_tag "#{image._parent.class.name.downcase}[images_attributes][#{image.id}][id]", image.id

@@ -28,7 +28,6 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     assert_equal 200,                     Artist.attachment_magick_default_options[:styles][:grid_10][:height]
   end
   
-  #FIXME Valores das variáveis devem ser aleatórios
   def test_generate_grids
     column_width  = 29
     column_amount = 10

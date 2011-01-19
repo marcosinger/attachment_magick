@@ -25,7 +25,7 @@ module AttachmentMagick
   end
   
   def attachment_magick(&block)
-    embeds_many                   :images, :class_name => "AttachmentMagick::Image"
+    embeds_many                   :images, :class_name => "AttachmentMagick::Image", :polymorphic => true
     accepts_nested_attributes_for :images
      
     default_grids = generate_grids

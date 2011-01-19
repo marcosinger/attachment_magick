@@ -43,7 +43,6 @@ class ActionController::TestCase
   end
 end
 
-#FIXME Nada DRY!
 class ActionView::TestCase
   def assert_element_in(target, match)
     target = Hpricot(target)

@@ -16,7 +16,7 @@ class Publisher::ImagesController < ActionController::Base
     hash      = {}
     
     array_ids.each_with_index do |id, index|
-      hash.merge!( {"#{id}" => {"id" => "#{id}", "priority" => "#{index}"}} )
+      hash.merge!( {"#{index}" => {:id => "#{id}", :priority => index}} )
     end
 
     @klass.images_attributes = hash

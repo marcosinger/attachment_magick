@@ -14,12 +14,16 @@ class Publisher::ImagesControllerTest < ActionController::TestCase
 
   test "should update priority order" do
     4.times{ @artist.images.create(:photo => exemple_file) }
+    @artist.save
+    @artist.reload
+    
     image_first = @artist.images.first
     image_last  = @artist.images.last
 
-    post :update_sortable, default_hash.merge({ :images => @artist.images.map(&:to_param).reverse })
+    post :update_sortable, default_hash.merge({ :images => @artist.images.map(&:id).reverse })
 
     @artist.reload
+    
     assert_equal image_first, @artist.images.order_by(:priority.asc).last
     assert_equal image_last,  @artist.images.order_by(:priority.asc).first
   end
