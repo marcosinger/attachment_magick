@@ -9,7 +9,7 @@ module AttachmentMagick
     def styles
       hash = {}
       instance_variables.each do |method|
-        method = method.gsub("@", "")
+        method = method.to_s.gsub("@", "")
         hash.merge!({ method.to_sym => send(method) })
       end
       
