@@ -14,6 +14,7 @@ ActionController::Base.view_paths   = ["app/views", File.expand_path('../../app/
 
 module AttachmentMagick
   attr_accessor :attachment_magick_default_options
+  attr_accessor :attachment_default_view
   
   class << self
     attr_accessor :configuration
@@ -64,7 +65,7 @@ module AttachmentMagick
   
   def grid_methods
     @attachment_magick_default_options[:styles].each do |key, value|
-      define_method "#{key.to_s}" do
+      self.class.send :define_method, "style_#{key.to_s}" do
         metric = "#{value[:width]}x#{value[:height]}"
         metric = "#{metric}#" if value[:height] && value[:crop] == true
         

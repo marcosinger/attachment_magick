@@ -5,10 +5,10 @@ class Publisher::ImagesController < ActionController::Base
   before_filter :load_klass
   
   def create
-    @image = @klass.images.create(:photo => params[:Filedata])
+    @image = @klass.images.create(:photo => params[:Filedata], :source => params[:source])
     @klass.save
     
-    render :partial => AttachmentMagick.configuration.default_add_partial, :collection => [@image], :as => :image, :locals => { :size => @klass.publisher }
+    render :partial => AttachmentMagick.configuration.default_add_partial, :collection => [@image], :as => :image, :locals => { :size => @klass.class.style_publisher }
   end
   
   def update_sortable
@@ -18,7 +18,7 @@ class Publisher::ImagesController < ActionController::Base
     array_ids.each_with_index do |id, index|
       hash.merge!( {"#{index}" => {:id => "#{id}", :priority => index}} )
     end
-
+    
     @klass.images_attributes = hash
     @klass.save
     
@@ -33,7 +33,15 @@ class Publisher::ImagesController < ActionController::Base
   private
   
   def load_klass
-    klass   = params[:klass].capitalize.constantize
-    @klass  = klass.find(params[:klass_id])
+    query   = ""
+    objects = params[:data_attachment].split("_")
+    objects = objects.in_groups_of(2)
+    
+    objects.each do |el|
+      str = objects.index(el) == 0 ? "" : "."
+      query << "#{str}#{el.first}.find('#{el.last}')"
+    end
+
+    @klass = eval(query)
   end
 end

@@ -4,6 +4,7 @@ class Artist
   
   field :name
   field :lastname
+  embeds_many :works
   
   validates_presence_of :name, :lastname
         

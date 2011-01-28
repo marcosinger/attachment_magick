@@ -40,6 +40,6 @@ class Publisher::ImagesControllerTest < ActionController::TestCase
   private 
 
   def default_hash
-    {:klass => @artist.class.name, :klass_id => @artist.id}
+    {:data_attachment => "#{@artist.class.name}_#{@artist.id}"}
   end
 end

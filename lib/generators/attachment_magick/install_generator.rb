@@ -7,7 +7,7 @@ module AttachmentMagick
         directory "public/"
         route "post 'publisher/images', :to => 'publisher/images#create'"
         route "post 'publisher/images/update_sortable', :to => 'publisher/images#update_sortable'"
-        route "delete 'publisher/images/:id/:klass/:klass_id',  :to => 'publisher/images#destroy'"
+        route "delete 'publisher/images/:id/:data_attachment',  :to => 'publisher/images#destroy'"
       end
     end
   end

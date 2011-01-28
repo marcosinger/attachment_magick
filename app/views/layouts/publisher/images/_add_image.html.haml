@@ -1,13 +1,13 @@
 .grid_5[image]
   .grid_3.alpha
-    = image_tag image.photo.thumb(size).url
+    = image_tag image.source.nil? ? image.photo.thumb(image._parent.class.style_publisher).url : image.source_to_image
     %input{:id => "image_id", :type => "hidden", :value => image.id}
     
   .grid_2.omega
     %p
       = link_to "remover", "javascript://", :class => "remove_image"
       %br
-      = link_to "ver original", image.photo.url, :target => "blank"
+      = link_to "ver original", image.source || image.photo.url, :target => "blank"
 
   .grid_5.alpha.omega
     %label LEGENDA
