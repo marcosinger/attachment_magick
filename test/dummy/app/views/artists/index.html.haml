@@ -13,12 +13,12 @@
         %ul
           %li
             = link_to "[x]", artist_path(artist), :method => :delete, :confirm => "remover #{artist.name}?"
-            
+
   .grid_19.tpush_2{:style => "overflow:hidden;"}
     -artist.images.each do |image|
-      = image_tag image.photo.thumb(artist.style_thumb).url,    :class => "attachment-thumb hide"
-      = image_tag image.photo.thumb(artist.style_grid_1).url,   :class => "attachment-grid_1 hide"
-      = image_tag image.photo.thumb(artist.style_grid_10).url,  :class => "attachment-grid_10 hide"
-      = image_tag image.photo.thumb(artist.style_grid_15).url,  :class => "attachment-grid_15 hide"
-      = image_tag image.photo.thumb(artist.style_grid_16).url,  :class => "attachment-grid_16 hide"
-      = image_tag image.photo.thumb(artist.style_fullscreen).url,  :class => "attachment-fullscreen"
+      = image_tag image.photo.thumb(Artist.style_thumb).url,    :class => "attachment-thumb hide"
+      = image_tag image.photo.thumb(Artist.style_grid_1).url,   :class => "attachment-grid_1 hide"
+      = image_tag image.photo.thumb(Artist.style_grid_10).url,  :class => "attachment-grid_10 hide"
+      = image_tag image.photo.thumb(Artist.style_grid_15).url,  :class => "attachment-grid_15 hide"
+      = image_tag image.photo.thumb(Artist.style_grid_16).url,  :class => "attachment-grid_16 hide"
+      = image_tag image.photo.thumb(Artist.style_fullscreen).url,  :class => "attachment-fullscreen"

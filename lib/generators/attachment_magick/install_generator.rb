@@ -5,9 +5,10 @@ module AttachmentMagick
 
       def copy_initializer
         directory "public/"
-        route "post 'publisher/images', :to => 'publisher/images#create'"
-        route "post 'publisher/images/update_sortable', :to => 'publisher/images#update_sortable'"
-        route "delete 'publisher/images/:id/:data_attachment',  :to => 'publisher/images#destroy'"
+        route "match '/media/*dragonfly', :to => Dragonfly[:images]"
+        route "post 'attachment_magick/images', :to => 'attachment_magick/images#create'"
+        route "post 'attachment_magick/images/update_sortable', :to => 'attachment_magick/images#update_sortable'"
+        route "delete 'attachment_magick/images/:id/:data_attachment',  :to => 'attachment_magick/images#destroy'"
       end
     end
   end

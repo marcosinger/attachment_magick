@@ -2,11 +2,11 @@
   =form_for @artist, :html => {:multipart => true} do |form|
     =form.label :name
     =form.text_field :name
-  
+
     =form.label :lastname
     =form.text_field :lastname
     =form.submit
-      
+
     = attachment_progress_container @artist
     = attachment_for_view @artist do |images|
       -images.each do |image|

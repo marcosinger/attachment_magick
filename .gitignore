@@ -7,3 +7,4 @@ test/dummy/tmp/
 .DS_Store
 rcov/
 tmp/
+coverage/

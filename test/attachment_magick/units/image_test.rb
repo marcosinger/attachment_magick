@@ -1,10 +1,10 @@
-require File.expand_path('../../../test_helper', __FILE__)
- 
+require 'test_helper'
+
 class AttachmentMagick::ImageTest < ActiveSupport::TestCase
   def test_image
     assert_kind_of AttachmentMagick::Image, AttachmentMagick::Image.new
   end
-  
+
   def test_create_thumb_for_vimeo_in_a_new_field
     @image = AttachmentMagick::Image.new(:source => 'http://vimeo.com/14074949')
     @image.save!

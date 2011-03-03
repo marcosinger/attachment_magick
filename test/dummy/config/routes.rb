@@ -1,11 +1,11 @@
 Dummy::Application.routes.draw do
 
 
-  delete 'publisher/images/:id/:data_attachment',  :to => 'publisher/images#destroy'
+  delete 'attachment_magick/images/:id/:data_attachment',  :to => 'attachment_magick/images#destroy'
 
-  post 'publisher/images/update_sortable', :to => 'publisher/images#update_sortable'
+  post 'attachment_magick/images/update_sortable', :to => 'attachment_magick/images#update_sortable'
 
-  post 'publisher/images', :to => 'publisher/images#create'
+  post 'attachment_magick/images', :to => 'attachment_magick/images#create'
 
   root :to => "artists#index"
   resources :artists

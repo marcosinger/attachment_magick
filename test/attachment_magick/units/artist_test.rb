@@ -1,6 +1,6 @@
-require File.expand_path('../../../test_helper', __FILE__)
- 
-class ArtistTest < ActiveSupport::TestCase  
+require 'test_helper'
+
+class ArtistTest < ActiveSupport::TestCase
   def test_access_grid_method
     assert_equal "36x36",     Artist.style_thumb
     assert_equal "54x",       Artist.style_grid_1
