@@ -7,6 +7,7 @@ class Work
   embedded_in :artist, :inverse_of => :works
   
   attachment_magick do
+    grid_5
     publisher
   end
 end

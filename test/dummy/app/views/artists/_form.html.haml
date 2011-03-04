@@ -1,3 +1,13 @@
+.grid_3.tpush_2
+  = link_to "Novo trabalho", new_artist_work_path(@artist)
+  
+  %br
+  %br
+  %span trabalhos
+  -@artist.works.each do |work|
+    %br
+    =link_to work.name, edit_artist_work_path(@artist, work)
+  
 .grid_13.tpush_2
   =form_for @artist, :html => {:multipart => true} do |form|
     =form.label :name
@@ -7,7 +17,7 @@
     =form.text_field :lastname
     =form.submit
 
+    %br
+    %br
     = attachment_progress_container @artist
-    = attachment_for_view @artist do |images|
-      -images.each do |image|
-        = image_tag(image.source.nil? ? image.photo.thumb(Artist.style_grid_10).url : image.source_to_image, :class => "grid_3")
+    = attachment_for_view @artist
