@@ -1,0 +1,5 @@
+Artist.include?(Mongoid::Document)
+ou
+Artist.include?(ActiveRecord::Persistence)
+ou 
+raise error =]

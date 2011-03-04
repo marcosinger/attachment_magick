@@ -1,4 +1,6 @@
 Dummy::Application.routes.draw do
+  match '/media/*dragonfly', :to => Dragonfly[:images]
+
   root :to => "artists#index"
   resources :artists do
     resources :works
