@@ -64,8 +64,8 @@ module AttachmentMagick
   end
 
   def define_relationship(klass)
-    embeds_many :images,  :class_name => "AttachmentMagick::MongoidImage",      :polymorphic => true  if klass.include?(Mongoid::Document)
-    has_many    :images,  :class_name => "AttachmentMagick::ActiveRecordImage", :as => :imageable, :dependent => :destroy if klass.include?(ActiveRecord::Persistence)
+    embeds_many :images,  :class_name => "AttachmentMagick::MongoidImage",      :polymorphic => true  if klass.include?(Mongoid::Document) if defined? Mongoid::Document
+    has_many    :images,  :class_name => "AttachmentMagick::ActiveRecordImage", :as => :imageable, :dependent => :destroy if klass.include?(ActiveRecord::Persistence) if defined? ActiveRecord::Persistence
 
     accepts_nested_attributes_for :images
   end
