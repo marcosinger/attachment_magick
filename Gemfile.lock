@@ -8,10 +8,8 @@ PATH
   remote: .
   specs:
     attachment_magick (0.0.1)
-      bson_ext (>= 1.2.0)
       dragonfly (>= 0.8.1)
       haml (= 3.0.24)
-      mongoid (>= 2.0.0.rc.6)
       rack-cache (>= 1.0)
 
 GEM
@@ -153,11 +151,13 @@ PLATFORMS
 DEPENDENCIES
   attachment_magick!
   auto_html!
+  bson_ext (>= 1.2.0)
   capybara (>= 0.4.0)
   colorific
   haml
   hpricot
   jquery-rails
+  mongoid (>= 2.0.0.rc.6)
   nokogiri
   rails (= 3.0.3)
   ruby-debug19

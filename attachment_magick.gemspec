@@ -9,8 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Marco Antônio Singer", "Carlos Brando"]
   s.email       = ["markaum@gmail.com", "eduardobrando@gmail.com"]
   s.homepage    = "http://github.com/marcosinger/attachment_magick"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = "little more magick when you upload image files (with SwfUpload and Dragonfly)"
 
   s.rubyforge_project = "attachment_magick"
 
@@ -19,8 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'mongoid',    '>=2.0.0.rc.6'
-  s.add_dependency 'bson_ext',   '>= 1.2.0'
   s.add_dependency 'dragonfly',  '>= 0.8.1'
   s.add_dependency 'rack-cache', '>= 1.0'
   s.add_dependency 'haml',       '= 3.0.24'
