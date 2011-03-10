@@ -1,8 +1,10 @@
 .thumbnails {margin-top:5px; font-size: 12px; line-height: 16px; font-family: Helvetica, Arial, Sans-serif; color:#000;}
 .thumbnails h4 {margin:15px 0px 15px 0px; border-top:2px solid #CCC;}
-.attachment_magick_image {border-bottom: 1px solid #CCC; margin:15px 0px 0px 0px; clear:left; padding: 3px 3px 3px 3px;cursor:pointer;}
-.attachment_magick_image:hover {background:#EEE;}
+.attachment_magick_image > div {border-bottom: 1px solid #CCC; margin:15px 0px 0px 0px; clear:left; padding: 3px 3px 3px 3px;cursor:pointer;}
+.attachment_magick_image > div:hover {background:#EEE;}
 
 .attachment_magick_image p {margin:0px;}
 .attachment_magick_image a {float:right;}
 .attachment_magick_image input[type="text"] {width:inherit; font-family:inherit; font-size:1em; border:1px solid #999; -webkit-border-radius:3px; -moz-border-radius:3px; margin-left:-2px;}
+
+.grid_19 img {margin-left:5px; margin-right:5px;}

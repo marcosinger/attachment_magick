@@ -1,15 +1,12 @@
 module AttachmentMagick
-  class Image
-    include Mongoid::Document
+  class ActiveRecordImage < ActiveRecord::Base
+    set_table_name "amagick_images"
+
     include AutoHtml
     include AutoHtmlFor
 
-    field           :photo_uid
-    field           :caption
-    field           :priority
-    field           :source
+    belongs_to      :imageable, :polymorphic => true
     image_accessor  :photo
-    embedded_in     :imageable, :inverse_of => :image
 
     auto_html_for :source => "_to_html" do
       vimeo(:width => 620, :height => 465)

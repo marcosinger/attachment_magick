@@ -2,5 +2,5 @@
   <%= image.caption%>
 </div>
 <div class="image_thumb">
-  <%= image_tag image.photo.thumb(image._parent.class.style_publisher).url%>
+  <%= image_tag image.photo.thumb(image.imageable.class.style_publisher).url%>
 </div>

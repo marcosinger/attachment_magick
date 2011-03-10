@@ -1,8 +1,8 @@
 .grid_5[image]
   .grid_3.alpha
-    = image_tag image.source.nil? ? image.photo.thumb(image._parent.class.style_publisher).url : image.source_to_image
+    = image_tag image.source.nil? ? image.photo.thumb(image.imageable.class.style_publisher).url : image.source_to_image
     %input{:id => "image_id", :type => "hidden", :value => image.id}
-    
+
   .grid_2.omega
     %p
       = link_to "remover", "javascript://", :class => "remove_image"
@@ -11,5 +11,5 @@
 
   .grid_5.alpha.omega
     %label LEGENDA
-    = text_field_tag "#{image._parent.class.name.downcase}[images_attributes][#{image.id}][caption]", image.caption
-    = hidden_field_tag "#{image._parent.class.name.downcase}[images_attributes][#{image.id}][id]", image.id
+    = text_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][caption]", image.caption
+    = hidden_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][id]", image.id

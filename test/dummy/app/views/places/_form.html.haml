@@ -1,0 +1,10 @@
+.grid_13.tpush_2
+  =form_for @place, :html => {:multipart => true} do |form|
+    =form.label :name
+    =form.text_field :name
+
+    =form.submit
+    %br
+    %br
+    = attachment_progress_container @place
+    = attachment_for_view @place

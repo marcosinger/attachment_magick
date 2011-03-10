@@ -1,13 +1,14 @@
-.grid_3.tpush_2
-  = link_to "Novo trabalho", new_artist_work_path(@artist)
-  
-  %br
-  %br
-  %span trabalhos
-  -@artist.works.each do |work|
+- unless @artist.new_record?
+  .grid_3.tpush_2
+    = link_to "Novo trabalho", new_artist_work_path(@artist)
+
     %br
-    =link_to work.name, edit_artist_work_path(@artist, work)
-  
+    %br
+    %span trabalhos
+    -@artist.works.each do |work|
+      %br
+      =link_to work.name, edit_artist_work_path(@artist, work)
+
 .grid_13.tpush_2
   =form_for @artist, :html => {:multipart => true} do |form|
     =form.label :name

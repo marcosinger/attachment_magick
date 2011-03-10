@@ -30,61 +30,19 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 # For generators
 require "rails/generators/test_case"
 require "generators/attachment_magick/install_generator"
-#require File.expand_path("../../app/helpers/application_helper",  __FILE__)
+require "generators/attachment_magick/migration_generator"
+
+# Some helpers
+require "attachment_magick/test/attachment_magick_test_helper"
+
+class ActiveSupport::TestCase
+  include AttachmentMagickTestHelper
+end
 
 class ActionController::TestCase
-  def assert_element_in(target, match)
-    target = Nokogiri::HTML(target)
-    target.xpath("//#{match}").present?
-  end
-
-  def create_artist(options={})
-    default_options = {:name => "Johnny", :lastname => "Depp"}
-    default_options.merge!(options)
-
-    @artist = Artist.create(default_options)
-    @artist.images.create(:photo => exemple_file)
-
-    @artist
-  end
-
-  def exemple_file
-    File.expand_path('../dummy/public/images/little_girl.jpg', __FILE__)
-  end
+  include AttachmentMagickTestHelper
 end
 
 class ActionView::TestCase
-  def assert_element_in(target, match)
-    target = Nokogiri::HTML(target)
-    target.xpath("//#{match}").present?
-  end
-
-  def assert_element_value(target, match, field)
-    target = Nokogiri::HTML(target)
-    target.xpath("//#{match}").first["#{field}"]
-  end
-
-  def create_artist(options={})
-    default_options = {:name => "Johnny", :lastname => "Depp"}
-    default_options.merge!(options)
-
-    @artist = Artist.create(default_options)
-    @artist.images.create(:photo => exemple_file)
-
-    return @artist
-  end
-
-  def create_work(artist)
-    default_options = {:name => "movie", :local => "Hollywood"}
-    artist.works.create(default_options)
-    artist.works.last.images.create(:photo => exemple_file)
-  end
-
-  def exemple_file
-    File.expand_path('../dummy/public/images/little_girl.jpg', __FILE__)
-  end
-
-  def exemple_partial
-    "layouts/custom_images_list"
-  end
+  include AttachmentMagickTestHelper
 end

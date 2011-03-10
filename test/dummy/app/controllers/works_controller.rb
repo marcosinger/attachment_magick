@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   before_filter :load_artist
-  
+
   def index
     @works = @artist.works
   end
@@ -15,26 +15,23 @@ class WorksController < ApplicationController
 
   def create
     @work = @artist.works.create(params[:work])
-
-    redirect_to edit_artist_path(@artist)
+    redirect_to edit_artist_work_path(@artist, @work)
   end
 
   def update
     @work = @artist.works.find(params[:id])
     @work.update_attributes(params[:work])
-
-    redirect_to edit_artist_path(@artist)
+    redirect_to edit_artist_work_path(@artist, @work)
   end
 
   def destroy
     @artist.works.find(params[:id]).destroy
-
     redirect_to artists_path
   end
 
   private
-  
+
   def load_artist
-    @artist = Artist.find(params[:artist_id])  
+    @artist = Artist.find(params[:artist_id])
   end
 end

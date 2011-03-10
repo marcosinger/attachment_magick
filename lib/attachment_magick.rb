@@ -1,5 +1,5 @@
 require "attachment_magick/configuration/configuration"
-require "attachment_magick/dragonfly/dragonfly_mongo"
+require "attachment_magick/dragonfly/init"
 require "attachment_magick/dsl"
 require 'attachment_magick/railtie'
 
@@ -17,9 +17,7 @@ module AttachmentMagick
   end
 
   def attachment_magick(&block)
-    embeds_many                   :images, :class_name => "AttachmentMagick::Image", :polymorphic => true
-    accepts_nested_attributes_for :images
-
+    define_relationship(self)
     default_grids = generate_grids
     map           = DSL.new(self, default_grids)
     map.instance_eval(&block)
@@ -65,6 +63,14 @@ module AttachmentMagick
     end
   end
 
+  def define_relationship(klass)
+    embeds_many :images,  :class_name => "AttachmentMagick::MongoidImage",      :polymorphic => true  if klass.include?(Mongoid::Document)
+    has_many    :images,  :class_name => "AttachmentMagick::ActiveRecordImage", :as => :imageable, :dependent => :destroy if klass.include?(ActiveRecord::Persistence)
+
+    accepts_nested_attributes_for :images
+  end
+
+  private :define_relationship
   private :generate_grids
   private :grid_methods
 end

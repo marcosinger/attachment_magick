@@ -1,0 +1,19 @@
+-@places.each do |place|
+  .grid_19.menu
+    .grid_2.alpha
+      %p
+        = link_to place.name, edit_place_path(place)
+    -unless place.images.empty?
+      .grid_16
+        %ul
+          -Place.attachment_magick_default_options[:styles].keys.sort{|x, y| x.to_s <=> y.to_s}.reject{|x| x == :fullscreen}.each do |style|
+            %li.grid_2.rpush_2{:class => style == :grid_3 ? "active" : ""}
+              = link_to "#{style}", "javascript://", :class => "open_attachment"
+      .grid_1.omega
+        %ul
+          %li
+            = link_to "[x]", place_path(place), :method => :delete, :confirm => "remover #{place.name}?"
+
+  .grid_19.tpush_2{:style => "overflow:hidden;"}
+    -place.images.each do |image|
+      = image_tag image.photo.thumb(Place.style_grid_3).url,  :class => "attachment-grid_3"

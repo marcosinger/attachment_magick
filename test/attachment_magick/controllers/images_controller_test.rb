@@ -4,10 +4,24 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
 
   setup do
     create_artist
+    create_work(@artist)
+    create_place
   end
 
-  test "should create image" do
-    post :create, default_hash.merge({ :Filedata => exemple_file })
+  test "should create artist image" do
+    post :create, artist_hash.merge({ :Filedata => exemple_file })
+    assert_response :success
+    assert  assert_element_in(response.body, "img")
+  end
+
+  test "should create work image" do
+    post :create, work_hash.merge({ :Filedata => exemple_file })
+    assert_response :success
+    assert  assert_element_in(response.body, "img")
+  end
+
+  test "should create place image" do
+    post :create, place_hash.merge({ :Filedata => exemple_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
@@ -20,7 +34,7 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
     image_first = @artist.images.first
     image_last  = @artist.images.last
 
-    post :update_sortable, default_hash.merge({ :images => @artist.images.map(&:id).reverse })
+    post :update_sortable, artist_hash.merge({ :images => @artist.images.map(&:id).reverse })
 
     @artist.reload
 
@@ -29,7 +43,7 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
   end
 
   test "should destroy image" do
-    get :destroy, default_hash.merge({ :id => @artist.images.first.to_param })
+    get :destroy, artist_hash.merge({ :id => @artist.images.first.to_param })
 
     @artist.reload
     assert_response :success
@@ -39,7 +53,15 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
 
   private
 
-  def default_hash
+  def artist_hash
     {:data_attachment => "#{@artist.class.name}_#{@artist.id}"}
+  end
+
+  def work_hash
+    {:data_attachment => "#{@artist.class.name}_#{@artist.id}_works_#{@artist.works.last.id}", :data_partial => exemple_partial}
+  end
+
+  def place_hash
+    {:data_attachment => "#{@place.class.name}_#{@place.id}"}
   end
 end
