@@ -1,4 +1,4 @@
-.grid_5[image]
+.grid_5.attachment_magick_image[image]
   .grid_3.alpha
     = image_tag image.source.nil? ? image.photo.thumb(image.imageable.class.style_publisher).url : image.source_to_image
     %input{:id => "image_id", :type => "hidden", :value => image.id}

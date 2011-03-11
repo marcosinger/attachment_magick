@@ -1,5 +1,5 @@
 class Place < ActiveRecord::Base
-  extend AttachmentMagick
+  include AttachmentMagick
 
   attachment_magick do
     grid_3

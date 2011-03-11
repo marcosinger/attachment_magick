@@ -2,10 +2,10 @@ require 'test_helper'
 require 'open-uri'
 
 class AttachmentMagickTest < ActiveSupport::TestCase
-  
+
   class Dog
     include Mongoid::Document
-    extend AttachmentMagick
+    include AttachmentMagick
 
     field :name
 
@@ -13,10 +13,10 @@ class AttachmentMagickTest < ActiveSupport::TestCase
       grid_1
     end
   end
-  
+
   class Cat
     include Mongoid::Document
-    extend AttachmentMagick
+    include AttachmentMagick
 
     field :name
 
@@ -24,12 +24,12 @@ class AttachmentMagickTest < ActiveSupport::TestCase
       grid_1 "300x150"
     end
   end
-  
+
   test "deveria manter o valor do grid original" do
     assert_equal "300x150#",  Cat.style_grid_1
     assert_equal "54x",       Dog.style_grid_1
   end
-  
+
   def test_has_attachment_magick
     grids = Artist.send(:generate_grids)
 
@@ -39,7 +39,6 @@ class AttachmentMagickTest < ActiveSupport::TestCase
       grid_7  :height => 200
       grid_10 :height => 200, :width => 100
     end
-
 
     assert_equal [:grid_1, :grid_5, :grid_7, :grid_10], order_array(Artist.attachment_magick_default_options[:styles].keys)
 

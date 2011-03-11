@@ -6,7 +6,7 @@ module AttachmentMagick::AttachmentMagickHelper
       obj = object
       key = "#{object.class.to_s.underscore}_#{object.id}"
 
-      if obj.respond_to? :embedded?
+      if obj.respond_to?(:embedded?)
         if obj.embedded?
           embedded_in = obj.relations.values.select { |x| x.macro == :embedded_in}.first
           parent      = embedded_in.class_name
@@ -48,7 +48,7 @@ module AttachmentMagick::AttachmentMagickHelper
       html_partial  = "<input id='attachmentmagick_partial' data-partial='#{partial}' type='hidden' value='#{key}'>" if partial
       html          = render(:partial => partial || "layouts/attachment_magick/images/add_image", :collection => collection, :as =>:image)
 
-      "#{html_partial}<div id='#{key}' class='attachment_magick_image #{'attachmentSortable' if use_sortable}'>#{html}</div><div>#{video}</div>".html_safe
+      "#{html_partial}<div id='#{key}' class='#{'attachmentSortable' if use_sortable}'>#{html}</div><div>#{video}</div>".html_safe
     end
   end
 end
