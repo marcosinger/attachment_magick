@@ -46,7 +46,7 @@ module AttachmentMagick::AttachmentMagickHelper
       key           = "#{object.class.to_s.underscore}_#{object.id}"
       video         = %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>} if use_video
       html_partial  = "<input id='attachmentmagick_partial' data-partial='#{partial}' type='hidden' value='#{key}'>" if partial
-      html          = render(:partial => partial || "layouts/attachment_magick/images/add_image", :collection => collection, :as =>:image)
+      html          = render(:partial => partial || AttachmentMagick.configuration.default_add_partial, :collection => collection, :as =>:image)
 
       "#{html_partial}<div id='#{key}' class='#{'attachmentSortable' if use_sortable}'>#{html}</div><div>#{video}</div>".html_safe
     end
