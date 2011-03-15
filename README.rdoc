@@ -1,3 +1,88 @@
-= AttachmentMagick
+== AttachmentMagick
 
-This project rocks and uses MIT-LICENSE.
+Attachment Magick is a gem to upload images and videos(vimeo) using swfupload.
+Supports Mongoid, coming soon support to activerecord.
+
+== Installation
+
+This gem is not released yet, some dependencies are still necessary
+Add to Gemfile
+
+  #AttachmentMagick requires
+  gem 'attachment_magick', :git => 'git@github.com:marcosinger/attachment_magick.git'
+  gem 'auto_html', :git => 'git@github.com:marcosinger/auto_html.git'
+  gem 'hpricot'
+  gem 'haml'
+
+Then run
+
+  bundle install
+
+After the gem installation, run the generator
+
+  attachment_magick:install
+
+The generator will install swfupload (js and css files) and will create some routes.
+
+Create a initializer like this (config/initializers/attachment_magick_setup.rb)
+
+  AttachmentMagick.setup do |config|
+    config.default_add_partial = '/layouts/attachment_magick/images/add_image'
+    config.columns_amount = 16
+    config.columns_width = 52
+    config.gutter = 8
+
+    config.custom_styles do
+      custom_style "50x50"
+    end
+  end
+
+* Attachment Magick is based in 960 Grid System (http://960.gs/)
+
+== Getting started
+
+Include the js files to your application layout or page
+
+  javascript_include_tag :defaults, "swfupload/handlers", "swfupload/swfupload"
+
+Include AttachmentMagick Module to your model
+
+  class Post
+    include Mongoid::Document
+    include AttachmentMagick
+
+    field :title
+  end
+
+Call this helpers in form views
+
+  attachment_progress_container @post
+  attachment_for_view @post
+
+
+== Customizing views
+
+=== Just Images
+
+  <div class="attachment_magick_image" id="image_<%=image.id%>" style="width:inerit; margin-bottom:10px;">
+    <%= image_tag image.photo.thumb(image._parent.class.style_publisher).url%>
+    <input id ="image_id" type ="hidden" value ="<%=image.id%>">
+
+    <%= link_to "[x]", "javascript://", :class => "remove_image", :style => "float:right;"%>
+  </div>
+
+  <%= attachment_for_view @post, "path_to_my_partial" %>
+
+== Customizing sizes
+
+  class Post
+    include Mongoid::Document
+    include AttachmentMagick
+
+    field :title
+
+    attachment_magick do
+      grid_1 "100x100"
+    end
+  end
+
