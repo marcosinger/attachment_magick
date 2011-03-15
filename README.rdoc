@@ -9,8 +9,8 @@ This gem is not released yet, some dependencies are still necessary
 Add to Gemfile
 
   #AttachmentMagick requires
-  gem 'attachment_magick', :git => 'git@github.com:marcosinger/attachment_magick.git'
-  gem 'auto_html', :git => 'git@github.com:marcosinger/auto_html.git'
+  gem 'attachment_magick', :git => 'git://github.com/marcosinger/attachment_magick.git'
+  gem 'auto_html', :git => 'git://github.com/marcosinger/auto_html.git'
   gem 'hpricot'
   gem 'haml'
 
