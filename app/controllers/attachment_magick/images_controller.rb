@@ -7,7 +7,7 @@ class AttachmentMagick::ImagesController < ActionController::Base
     @image = @klass.images.create(:photo => params[:Filedata], :source => params[:source], :image_type => params[:data_type])
     @klass.save
 
-    if params[:data_partial]
+    if params[:data_partial].present?
       render :partial => params[:data_partial], :collection => [@image], :as => :image
     else
       render :partial => AttachmentMagick.configuration.default_add_partial, :collection => [@image], :as => :image, :locals => { :size => @klass.class.style_publisher }
