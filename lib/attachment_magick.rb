@@ -29,7 +29,7 @@ module AttachmentMagick
     def attachment_magick(&block)
       default_grids = generate_grids
       map           = DSL.new(self, default_grids)
-      map.instance_eval(&block)
+      map.instance_eval(&block) if block_given?
 
       self.attachment_magick_default_options = {:styles => map.styles || default_grids}
       grid_methods
