@@ -15,5 +15,5 @@ module AttachmentMagick
     auto_html_for :source => "_to_image" do
       vimeo_image(:size => :large)
     end
-  end
+  end if defined? ActiveRecord::Persistence
 end

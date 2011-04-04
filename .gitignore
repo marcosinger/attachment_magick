@@ -1,4 +1,3 @@
-.rvmrc
 .bundle/
 log/*.log
 pkg/
@@ -9,3 +8,4 @@ test/dummy/tmp/
 rcov/
 tmp/
 coverage/
+._*
