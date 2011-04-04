@@ -27,7 +27,7 @@ module AttachmentMagick::AttachmentMagickHelper
     end
   end
 
-  def attachment_for_view(object, partial = nil, collection=nil, use_video=true, use_sortable=true)
+  def attachment_for_view(object, partial = nil, collection=nil, use_sortable=true)
     unless object.new_record?
       unless collection.present?
         if defined? Mongoid::Document
@@ -44,11 +44,14 @@ module AttachmentMagick::AttachmentMagickHelper
       end
 
       key           = "#{object.class.to_s.underscore}_#{object.id}"
-      video         = %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>} if use_video
       html_partial  = "<input id='attachmentmagick_partial' data-partial='#{partial}' type='hidden' value='#{key}'>" if partial
       html          = render(:partial => partial || AttachmentMagick.configuration.default_add_partial, :collection => collection, :as =>:image)
 
-      "#{html_partial}<div id='#{key}' class='#{'attachmentSortable' if use_sortable}'>#{html}</div><div>#{video}</div>".html_safe
+      "#{html_partial}<div id='#{key}' class='#{'attachmentSortable' if use_sortable}'>#{html}</div><div></div>".html_safe
     end
+  end
+  
+  def attachment_for_video
+    %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>}.html_safe
   end
 end
