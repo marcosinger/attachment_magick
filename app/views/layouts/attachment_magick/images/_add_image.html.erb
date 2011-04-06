@@ -1,0 +1,18 @@
+<div class="grid_5 attachment_magick_image">
+  <div class="grid_3 alpha">
+    <%= image_tag image.source.nil? ? image.photo.thumb(image.imageable.class.style_publisher).url : image.source_to_image%>
+    <input type="hidden" value="<%= image.id%>" id="image_id">
+  </div>
+  <div class="grid_2 omega">
+    <p>
+      <%= link_to "remover", "javascript://", :class => "remove_image"%>
+      <br />
+      <%= link_to "ver original", image.source || image.photo.url, :target => "blank"%>
+    </p>
+  </div>
+  <div class="grid_5 alpha omega">
+    <label>LEGENDA</label>
+    <%= text_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][caption]", image.caption%>
+    <%= hidden_field_tag "#{image.imageable.class.name.downcase}[images_attributes][#{image.id}][id]", image.id%>
+  </div>
+</div>

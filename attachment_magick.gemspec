@@ -20,5 +20,4 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'dragonfly',  '>= 0.8.1'
   s.add_dependency 'rack-cache', '>= 1.0'
-  s.add_dependency 'haml',       '= 3.0.24'
 end

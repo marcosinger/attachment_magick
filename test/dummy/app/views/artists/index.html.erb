@@ -1,0 +1,39 @@
+<% for artist in @artists %>
+  <div class="grid_19 menu">
+    <div class="grid_2 alpha">
+      <p>
+        <%= link_to "#{artist.name} #{artist.lastname}", edit_artist_path(artist)%>
+      </p>
+    </div>
+    <% unless artist.images.empty? %>
+      <div class="grid_16">
+        <ul>
+          <% Artist.attachment_magick_default_options[:styles].keys.sort{|x, y| x.to_s <=> y.to_s}.reject{|x| x == :fullscreen}.each do |style| %>
+            <li class="grid_2 rpush_2 <%= style == :grid_10 ? "active" : ""%>">
+              <%= link_to "#{style}", "javascript://", :class => "open_attachment"%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="grid-1 omega">
+      <ul>
+        <li>
+          <%= link_to "[x]", artist_path(artist), :method => :delete, :confirm => "remover #{artist.name}?"%>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid_19 tpush_2">
+    <%artist.images.each do |image|%>
+      <%= image_tag image.photo.thumb(Artist.style_thumb).url,    :class => "attachment-thumb hide"%>
+      <%= image_tag image.photo.thumb(Artist.style_grid_1).url,   :class => "attachment-grid_1 hide"%>
+      <%= image_tag image.photo.thumb(Artist.style_grid_10).url,  :class => "attachment-grid_10"%>
+      <%= image_tag image.photo.thumb(Artist.style_grid_15).url,  :class => "attachment-grid_15 hide"%>
+      <%= image_tag image.photo.thumb(Artist.style_grid_16).url,  :class => "attachment-grid_16 hide"%>
+      <%= image_tag image.photo.thumb(Artist.style_publisher).url,  :class => "attachment-publisher hide"%>
+    <% end %>
+  </div>
+<% end %>
+
+

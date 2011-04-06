@@ -13,6 +13,5 @@ gem 'ruby-debug19'
 gem 'simplecov'
 gem 'jquery-rails'
 gem 'auto_html', :git => 'git://github.com/marcosinger/auto_html.git'
-gem 'haml'
 # Specify your gem's dependencies in attachment_magick.gemspec
 gemspec
