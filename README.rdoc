@@ -5,22 +5,14 @@ Supports Mongoid, coming soon support to activerecord.
 
 == Installation
 
-This gem is not released yet, some dependencies are still necessary
 Add to Gemfile
 
-  #AttachmentMagick requires
-  gem 'attachment_magick', :git => 'git://github.com/marcosinger/attachment_magick.git'
-  gem 'auto_html', :git => 'git://github.com/marcosinger/auto_html.git'
-  gem 'hpricot'
-  gem 'haml'
+  gem 'attachment_magick'
 
-Then run
-
-  bundle install
 
 After the gem installation, run the generator
 
-  attachment_magick:install
+  rails g attachment_magick:install
 
 The generator will install swfupload (js and css files) and will create some routes.
 
