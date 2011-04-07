@@ -1,7 +1,7 @@
 == AttachmentMagick
 
 Attachment Magick is a gem to upload images and videos(vimeo) using swfupload.
-Supports Mongoid, coming soon support to activerecord.
+Supports Mongoid and ActiveRecord.
 
 == Installation
 
@@ -15,6 +15,10 @@ After the gem installation, run the generator
   rails g attachment_magick:install
 
 The generator will install swfupload (js and css files) and will create some routes.
+
+And if you using ActiveRecord, run this too
+
+  rails g attachment_magick:migration
 
 Create a initializer like this (config/initializers/attachment_magick_setup.rb)
 
