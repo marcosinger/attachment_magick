@@ -9,3 +9,4 @@ rcov/
 tmp/
 coverage/
 ._*
+*.gem

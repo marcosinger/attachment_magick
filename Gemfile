@@ -11,7 +11,5 @@ gem 'hpricot'
 gem 'colorific'
 gem 'ruby-debug19'
 gem 'simplecov'
-gem 'jquery-rails'
-gem 'auto_html', :git => 'git://github.com/marcosinger/auto_html.git'
 # Specify your gem's dependencies in attachment_magick.gemspec
 gemspec

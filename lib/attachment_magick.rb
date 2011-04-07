@@ -3,6 +3,7 @@ require "attachment_magick/dragonfly/init"
 require "attachment_magick/dsl"
 require 'attachment_magick/railtie'
 require 'active_support/concern'
+require "auto_html"
 
 module AttachmentMagick
   extend ActiveSupport::Concern
