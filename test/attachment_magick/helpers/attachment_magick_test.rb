@@ -46,10 +46,10 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
     assert assert_element_in(html, "div[@class='image_thumb']")
     assert assert_element_in(html, "img")
   end
-  
+
   def test_attachment_for_video
-    html = attachment_for_video
-    
+    html = attachment_for_video(@artist)
+
     assert assert_element_in(html, "input")
     assert assert_element_in(html, "a[@class='video_upload']")
   end

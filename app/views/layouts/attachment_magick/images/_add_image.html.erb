@@ -1,6 +1,10 @@
 <div class="grid_5 attachment_magick_image">
   <div class="grid_3 alpha">
-    <%= image_tag image.source.nil? ? image.photo.thumb(image.imageable.class.style_publisher).url : image.source_to_image%>
+    <% if image.is_flash? %>
+      <%= attachment_for_flash(image.photo.url) %>
+    <% else %>
+      <%= image_tag((image.source.nil? ? image.photo.thumb(image.imageable.class.style_publisher).url : image.source_to_image), :alt => "") %>
+    <% end %>
     <input type="hidden" value="<%= image.id%>" id="image_id">
   </div>
   <div class="grid_2 omega">
