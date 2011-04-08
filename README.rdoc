@@ -65,6 +65,7 @@ Call this helpers in form views
   attachment_progress_container @post
   attachment_for_view @post
   attachment_for_video @post
+  attachment_for_flash @image.photo.url
 
 == Customizing views
 

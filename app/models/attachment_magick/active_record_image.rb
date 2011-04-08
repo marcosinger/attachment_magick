@@ -21,5 +21,6 @@ module AttachmentMagick
     def is_flash?
       false
     end
+
   end if defined? ActiveRecord::Persistence
 end

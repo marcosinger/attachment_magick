@@ -1,3 +1,5 @@
+require "mime/types"
+
 module AttachmentMagick
   class MongoidImage
     include Mongoid::Document
@@ -32,16 +34,11 @@ module AttachmentMagick
 
     #FIXME - find a better way to compare
     def is_flash?
-      if self.content_type =~ /flash/
-        true
-      else
-        false
-      end
+      self.content_type =~ /flash/ ? true : false
     end
 
     private
     def set_content_type
-      require "mime/types"
       self.content_type = MIME::Types.type_for(self.file_name.to_s).to_s
     end
   end

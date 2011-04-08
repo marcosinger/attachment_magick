@@ -4,12 +4,7 @@ class AttachmentMagick::ImagesController < ActionController::Base
   before_filter :load_klass
 
   def create
-    if params[:Filedata].respond_to?("original_filename")
-      filename = params[:Filedata].original_filename
-    else
-      filename = ""
-    end
-    @image = @klass.images.create(:photo => params[:Filedata], :source => params[:source], :file_name => filename)
+    @image = @klass.images.create(:photo => params[:Filedata], :source => params[:source], :file_name => params[:Filedata].original_filename)
     @klass.save
 
     if params[:data_partial].present?

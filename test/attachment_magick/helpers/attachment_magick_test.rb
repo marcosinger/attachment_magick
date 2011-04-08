@@ -53,4 +53,12 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
     assert assert_element_in(html, "input")
     assert assert_element_in(html, "a[@class='video_upload']")
   end
+
+  def test_attachment_for_flash
+    @artist.images.create(:photo => exemple_file)
+
+    html = attachment_for_flash(@artist.images.first.photo.url)
+    assert assert_element_in(html, "object")
+    assert assert_element_in(html, "object[@width='100'][@height='60']")
+  end
 end
