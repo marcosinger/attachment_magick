@@ -52,7 +52,7 @@ module AttachmentMagick::AttachmentMagickHelper
   end
 
   def attachment_for_video(object)
-    %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>}.html_safe unless object.new_record?
+    %{<label>vídeo</label><ol class='form-block'>#{render :partial => "/attachment_magick/video_upload"}</ol>}.html_safe unless object.new_record?
   end
 
   #FIXME - verify this html

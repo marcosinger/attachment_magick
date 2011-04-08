@@ -14,7 +14,7 @@ module Dummy
     config.encoding           = "utf-8"
     config.filter_parameters  += [:password]
 
-    config.action_view.javascript_expansions[:defaults] = %w(application jquery.min rails)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails application)
 
     config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images, '/media'
     config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {

@@ -13,7 +13,7 @@ module AttachmentMagick
       @columns_width          = 54
       @gutter                 = 3
       @custom_styles          = []
-      @default_add_partial    = "layouts/attachment_magick/images/add_image"
+      @default_add_partial    = "/attachment_magick/add_image"
     end
 
     def custom_styles(&block)

@@ -44,6 +44,14 @@ module AttachmentMagickTestHelper
     Tempfile.new('little_girl.jpg')
   end
 
+  def exemple_youtube
+    'http://www.youtube.com/watch?v=FUe83k3t_0s'
+  end
+
+  def exemple_vimeo
+    'http://vimeo.com/14051767'
+  end
+
   def exemple_partial
     "layouts/custom_images_list"
   end
