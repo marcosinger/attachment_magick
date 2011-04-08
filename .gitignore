@@ -10,3 +10,4 @@ tmp/
 coverage/
 ._*
 *.gem
+.rvmrc

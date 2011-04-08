@@ -9,21 +9,20 @@
         <%=link_to work.name, edit_artist_work_path(@artist, work)%>
       <% end %>
   </div>
-  
+<% end %>
   <div class="grid_13 tpush_2">
     <%=form_for @artist, :html => {:multipart => true} do |form|%>
       <%=form.label :name%>
       <%=form.text_field :name%>
-  
+
       <%=form.label :lastname%>
       <%=form.text_field :lastname%>
       <%=form.submit%>
       <br />
       <br />
-  
+
       <%= attachment_progress_container @artist%>
       <%= attachment_for_view @artist%>
-      <%= attachment_for_video%>
+      <%= attachment_for_video @artist%>
     <% end %>
   </div>
-<% end %>

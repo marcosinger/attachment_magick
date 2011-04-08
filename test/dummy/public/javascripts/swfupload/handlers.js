@@ -48,7 +48,7 @@ var attachmentMagick = {
           post_params :                 { 'data_attachment' : data_attachment, 'data_partial' : data_partial },
 
           file_size_limit:              '20 MB',
-          file_types:                   '*.jpg; *.png; *.gif; *.jpeg',
+          file_types:                   '*.jpg; *.png; *.gif; *.jpeg; *.swf',
           file_types_description:       'Images Files',
           file_upload_limit :           0,
 

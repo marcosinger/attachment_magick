@@ -151,6 +151,7 @@ DEPENDENCIES
   capybara (>= 0.4.0)
   colorific
   hpricot
+  mime-types (>= 1.16)
   mongoid (>= 2.0.0.rc.6)
   nokogiri
   rails (= 3.0.3)

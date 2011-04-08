@@ -37,7 +37,7 @@ Create a initializer like this (config/initializers/attachment_magick_setup.rb)
 * Attachment Magick is based in 960 Grid System (http://960.gs/)
 
 Add to application.rb
-  
+
   config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images, '/media'
   config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
     :verbose     => true,
@@ -64,7 +64,7 @@ Call this helpers in form views
 
   attachment_progress_container @post
   attachment_for_view @post
-  attachment_for_video
+  attachment_for_video @post
 
 == Customizing views
 

@@ -11,5 +11,6 @@ gem 'hpricot'
 gem 'colorific'
 gem 'ruby-debug19'
 gem 'simplecov'
+gem 'mime-types', '>=1.16'
 # Specify your gem's dependencies in attachment_magick.gemspec
 gemspec

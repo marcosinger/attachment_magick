@@ -50,8 +50,8 @@ module AttachmentMagick::AttachmentMagickHelper
       "#{html_partial}<div id='#{key}' class='#{'attachmentSortable' if use_sortable}'>#{html}</div><div></div>".html_safe
     end
   end
-  
-  def attachment_for_video
-    %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>}.html_safe
+
+  def attachment_for_video(object)
+    %{<label>vídeo</label><ol class='form-block'>#{render :partial => "layouts/attachment_magick/images/video_upload"}</ol>}.html_safe unless object.new_record?
   end
 end
