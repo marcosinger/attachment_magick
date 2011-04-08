@@ -23,14 +23,14 @@ And if you using ActiveRecord, run this too
 Create a initializer like this (config/initializers/attachment_magick_setup.rb)
 
   AttachmentMagick.setup do |config|
-    config.default_add_partial = '/layouts/attachment_magick/images/add_image'
+    #config.default_add_partial = '/attachment_magick/add_image'  # default
     config.columns_amount = 16
-    config.columns_width = 52
-    config.gutter = 8
+    config.columns_width  = 52
+    config.gutter         = 8
 
     config.custom_styles do
       publisher "52x"
-      custom_style "50x50"
+      my_custom_style "50x50"
     end
   end
 
@@ -54,10 +54,9 @@ Include the js files to your application layout or page
 Include AttachmentMagick Module to your model
 
   class Post
-    include Mongoid::Document
     include AttachmentMagick
 
-    field :title
+    ...
   end
 
 Call this helpers in form views
@@ -66,6 +65,10 @@ Call this helpers in form views
   attachment_for_view @post
   attachment_for_video @post
   attachment_for_flash @image.photo.url
+
+For customize your list for images
+  attachment_for_view @post, 'path/my_partial'
+
 
 == Customizing views
 
@@ -83,13 +86,9 @@ Call this helpers in form views
 == Customizing sizes
 
   class Post
-    include Mongoid::Document
     include AttachmentMagick
-
-    field :title
 
     attachment_magick do
       grid_1 "100x100"
     end
   end
-
