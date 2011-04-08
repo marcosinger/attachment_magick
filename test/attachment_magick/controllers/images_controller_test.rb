@@ -14,6 +14,18 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
     assert  assert_element_in(response.body, "img")
   end
 
+  test "should create artist vimeo video" do
+    post :create, artist_hash.merge({ :source => exemple_vimeo })
+    assert_response :success
+    assert  assert_element_in(response.body, "img")
+  end
+
+  test "should create artist youtube video" do
+    post :create, artist_hash.merge({ :source => exemple_youtube })
+    assert_response :success
+    assert  assert_element_in(response.body, "img")
+  end
+
   test "should create work image" do
     post :create, work_hash.merge({ :Filedata => exemple_file })
     assert_response :success
