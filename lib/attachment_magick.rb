@@ -67,8 +67,11 @@ module AttachmentMagick
     def grid_methods
       self.attachment_magick_default_options[:styles].each do |key, value|
         self.send :define_singleton_method, "style_#{key.to_s}" do
+          value[:width]   = value[:width] == 0 ? nil : value[:width]
+          value[:height]  = value[:height] == 0 ? nil : value[:height]
+
           metric = "#{value[:width]}x#{value[:height]}"
-          metric = "#{metric}#" if value[:height] && value[:crop] == true
+          metric = "#{metric}#{value[:ajust]}" if value[:ajust]
 
           return metric
         end

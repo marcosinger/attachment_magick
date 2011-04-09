@@ -12,8 +12,8 @@ class Artist
     grid_1
     grid_10 :width => 150
     grid_15 "200x300"
-    grid_16 :height => 230
-    thumb   :crop => false
+    grid_16 :height => 230, :ajust => "#"
+    thumb
     fullscreen
     publisher
   end

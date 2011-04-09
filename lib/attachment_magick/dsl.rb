@@ -7,7 +7,6 @@ module AttachmentMagick
       @set    = set
       @styles = {}
       @default_grids = default_grids
-      @default_options = {:crop => true}
     end
 
     def method_missing(name, *params, &blk)
@@ -21,13 +20,14 @@ module AttachmentMagick
         options = {}
         options.merge!(:width   => values.first.to_i) if values.first
         options.merge!(:height  => values.last.to_i)  if values.second
+        options.merge!(:ajust   => values.second.match(/\W/).to_s) unless values.second.match(/\W/).to_s.blank? if values.second
 
         options = @default_grids[name.to_sym].merge(options)
       elsif options.is_a?(Hash)
         options = @default_grids[name.to_sym].merge(options)
       end
 
-      @styles.merge!(name.to_sym => @default_options.merge(options))
+      @styles.merge!(name.to_sym => options)
     end
 
     def styles

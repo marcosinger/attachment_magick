@@ -22,12 +22,14 @@ class AttachmentMagickTest < ActiveSupport::TestCase
 
     attachment_magick do
       grid_1 "300x150"
+      grid_7 "x560>"
     end
   end
 
   test "deveria manter o valor do grid original" do
-    assert_equal "300x150#",  Cat.style_grid_1
-    assert_equal "54x",       Dog.style_grid_1
+    assert_equal "300x150", Cat.style_grid_1
+    assert_equal "x560>",   Cat.style_grid_7
+    assert_equal "54x",     Dog.style_grid_1
   end
 
   def test_has_attachment_magick
