@@ -7,5 +7,6 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal "150x",      Artist.style_grid_10
     assert_equal "200x300",   Artist.style_grid_15
     assert_equal "909x230#",  Artist.style_grid_16
+    assert_equal "x700>",     Artist.style_portrait
   end
 end

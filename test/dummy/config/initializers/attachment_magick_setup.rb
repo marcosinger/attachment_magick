@@ -4,8 +4,9 @@ AttachmentMagick.setup do |config|
   config.gutter               = 3
 
   config.custom_styles do
-    thumb      "36x36"
-    fullscreen :width => 1024
-    publisher "54x"
+    thumb       "36x36"
+    portrait    "x700>"
+    fullscreen  :width => 1024
+    publisher   "54x"
   end
 end

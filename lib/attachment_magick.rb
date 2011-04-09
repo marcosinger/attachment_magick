@@ -54,7 +54,8 @@ module AttachmentMagick
           if value.is_a?(String)
             width, height = value.split("x")
             option        = {:width => width.to_i}
-            option.merge!({:height => height.to_i}) if height
+            option.merge!({:height  => height.to_i}) if height
+            option.merge!({:ajust    => height.match(/\W/).to_s}) unless height.match(/\W/).to_s.blank? if height
           end
 
           hash.merge!({key.to_sym => option})

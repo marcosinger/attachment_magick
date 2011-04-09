@@ -16,5 +16,6 @@ class Artist
     thumb
     fullscreen
     publisher
+    portrait
   end
 end
