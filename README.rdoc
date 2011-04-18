@@ -95,8 +95,8 @@ For customize your list for images
 
 == Credits
 
-Author: [Marco Singer](http://github.com/marcosinger)<br/>
+Author: [Marco Singer](http://github.com/marcosinger)
 Contributors: [Lucas Renan](http://github.com/lucasrenan), [Carlos Brando](http://github.com/carlosbrando)
 
 == See in RubyGems.org
-  http://rubygems.org/gems/attachment_magick
+(http://rubygems.org/gems/attachment_magick)
