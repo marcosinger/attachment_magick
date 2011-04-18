@@ -93,7 +93,7 @@ For customize your list for images
     end
   end
 
-== Credits
+## Credits
 
   Author: [Marco Singer](http://github.com/marcosinger)<br/>
   Contributors: [Lucas Renan](http://github.com/lucasrenan), [Carlos Brando](http://github.com/carlosbrando)
