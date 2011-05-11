@@ -6,5 +6,9 @@ module AttachmentMagick
     initializer 'attachment_magick.helper' do |app|
       ActionView::Base.send :include, AttachmentMagickHelper
     end
+
+    initializer 'attachment_magick_dragonfly' do |app|
+      require "attachment_magick/dragonfly/init"
+    end
   end
 end

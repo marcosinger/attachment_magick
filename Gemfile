@@ -4,8 +4,8 @@ gem "rails", "3.0.7"
 gem "capybara", ">= 0.4.0"
 gem "sqlite3-ruby", :require => "sqlite3"
 
-gem 'mongoid', '>=2.0.0.rc.6'
-gem 'bson_ext', '>= 1.2.0'
+gem "mongoid", "~> 2.0"
+gem "bson_ext", "~> 1.3"
 gem 'nokogiri'
 gem 'hpricot'
 gem 'colorific'

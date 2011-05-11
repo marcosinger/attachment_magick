@@ -16,7 +16,7 @@ module Dummy
 
     config.action_view.javascript_expansions[:defaults] = %w(jquery.min rails application)
 
-    config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images, '/media'
+    config.middleware.insert 0, 'Dragonfly::Middleware', :images
     config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
       :verbose     => true,
       :metastore   => "file:#{Rails.root}/tmp/dragonfly/cache/meta",
