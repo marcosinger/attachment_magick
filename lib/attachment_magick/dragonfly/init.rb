@@ -14,10 +14,15 @@ if defined? Mongoid::Document
 
   mongo_yml_path  = Rails.env.test? ? "#{File.expand_path('../../../../test/dummy/config', __FILE__)}" : "config"
   yaml_file       = YAML.load_file(File.join(mongo_yml_path, 'mongoid.yml'))[Rails.env]
-  db              = yaml_file['database']
-  username        = yaml_file['username']
-  password        = yaml_file['password']
-  app.datastore   = Dragonfly::DataStorage::MongoDataStore.new(:database => db, :username => username, :password => password)
+
+  app.datastore = Dragonfly::DataStorage::MongoDataStore.new
+  app.datastore.configure do |c|
+    c.host      = yaml_file['host']                 # defaults to localhost
+    c.port      = yaml_file['port']                 # defaults to mongo default (27017)
+    c.database  = yaml_file['database']             # defaults to 'dragonfly'
+    c.username  = yaml_file['username']             # only needed if mongo is running in auth mode
+    c.password  = yaml_file['password']             # only needed if mongo is running in auth mode
+  end
 
   app.define_macro_on_include(Mongoid::Document, :image_accessor)
 end
