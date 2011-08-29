@@ -27,7 +27,8 @@ Create a initializer like this (config/initializers/attachment_magick_setup.rb)
     config.columns_amount = 16
     config.columns_width  = 52
     config.gutter         = 8
-
+    config.orms           = ["ActiveRecord", "Mongoid"] # Mongoid is default
+    
     config.custom_styles do
       publisher "52x"
       my_custom_style "50x50"

@@ -18,10 +18,15 @@ module AttachmentMagick
 
   included do
     cattr_accessor :attachment_magick_default_options
-
-    embeds_many :images,  :class_name => "AttachmentMagick::MongoidImage",      :polymorphic => true  if self.include?(Mongoid::Document) if defined? Mongoid::Document
-    has_many    :images,  :class_name => "AttachmentMagick::ActiveRecordImage", :as => :imageable, :dependent => :destroy if self.include?(ActiveRecord::Persistence) if defined? ActiveRecord::Persistence
-
+    
+    if AttachmentMagick.configuration.orms.include?("Mongoid")
+      embeds_many :images, :class_name => "AttachmentMagick::MongoidImage", :polymorphic => true  if self.include?(Mongoid::Document)
+    end
+    
+    if AttachmentMagick.configuration.orms.include?("ActiveRecord")
+      has_many :images,  :class_name => "AttachmentMagick::ActiveRecordImage", :as => :imageable, :dependent => :destroy if self.include?(ActiveRecord::Persistence)
+    end
+    
     accepts_nested_attributes_for :images
   end
 
