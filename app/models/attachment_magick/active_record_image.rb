@@ -22,5 +22,5 @@ module AttachmentMagick
       false
     end
 
-  end if defined? ActiveRecord::Persistence
+  end if AttachmentMagick.configuration.orms.include?("ActiveRecord")
 end

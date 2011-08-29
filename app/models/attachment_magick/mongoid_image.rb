@@ -41,5 +41,5 @@ module AttachmentMagick
     def set_content_type
       self.content_type = MIME::Types.type_for(self.file_name.to_s).to_s
     end
-  end
+  end if AttachmentMagick.configuration.orms.include?("Mongoid")
 end
