@@ -23,11 +23,16 @@ And if you are using ActiveRecord, run this too
 Create a initializer like this (config/initializers/attachment_magick_setup.rb)
 
   AttachmentMagick.setup do |config|
-    #config.default_add_partial = '/attachment_magick/add_image'  # default
-    config.columns_amount = 16
-    config.columns_width  = 52
-    config.gutter         = 8
-    config.orms           = ["ActiveRecord", "Mongoid"] # Mongoid is default
+    # config.default_add_partial = '/attachment_magick/add_image'  # default
+    
+    # You can set grid size manually:
+      config.columns_amount = 16
+      config.columns_width  = 52
+      config.gutter         = 8
+    # Or with our magick :)
+      config.parse_stylesheet('name_of_my_grid_file.css')
+    
+    config.orms = ["ActiveRecord", "Mongoid"] # Mongoid is default
     
     config.custom_styles do
       publisher "52x"
