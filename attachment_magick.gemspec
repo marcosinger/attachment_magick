@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "attachment_magick"
   s.version     = AttachmentMagick::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Marco Antônio Singer", "Carlos Brando"]
-  s.email       = ["markaum@gmail.com", "eduardobrando@gmail.com"]
+  s.authors     = ["Marco Antônio Singer", "Carlos Brando", "Lucas Renan"]
+  s.email       = ["markaum@gmail.com", "eduardobrando@gmail.com", "contato@lucasrenan.com"]
   s.homepage    = "http://github.com/marcosinger/attachment_magick"
   s.summary     = "little more magick when you upload image files (with SwfUpload and Dragonfly)"
 
@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack-cache', '>= 1.0'
   s.add_dependency 'jquery-rails', '>= 0.2.7'
   s.add_dependency 'marcosinger-auto_html', '>= 1.3.4'
+  s.add_dependency 'marcosinger-css_parser', '>= 1.3.0'
 end
