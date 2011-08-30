@@ -99,6 +99,30 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     assert_equal 1024,  Artist.attachment_magick_default_options[:styles][:full][:width]
   end
 
+  def test_setup_with_stylesheet
+    assert_equal 19,  AttachmentMagick.configuration.columns_amount
+    assert_equal 54,  AttachmentMagick.configuration.columns_width
+    assert_equal 3,   AttachmentMagick.configuration.gutter
+
+    AttachmentMagick.setup {|config| config.parse_stylesheet 'old_grid.css'}
+
+    assert_equal 12,  AttachmentMagick.configuration.columns_amount
+    assert_equal 60,  AttachmentMagick.configuration.columns_width
+    assert_equal 10,  AttachmentMagick.configuration.gutter
+
+    AttachmentMagick.setup {|config| config.parse_stylesheet 'grid.css'}
+
+    assert_equal 19,  AttachmentMagick.configuration.columns_amount
+    assert_equal 54,  AttachmentMagick.configuration.columns_width
+    assert_equal 4,   AttachmentMagick.configuration.gutter
+
+    AttachmentMagick.setup {|config| config.parse_stylesheet 'not_found.css'}
+
+    assert_equal 19,  AttachmentMagick.configuration.columns_amount
+    assert_equal 54,  AttachmentMagick.configuration.columns_width
+    assert_equal 4,   AttachmentMagick.configuration.gutter
+  end
+
   private
 
   def order_array(array)
