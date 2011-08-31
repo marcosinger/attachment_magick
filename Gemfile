@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem "rails", "3.0.7"
-gem "capybara", ">= 0.4.0"
+gem "capybara", ">= 1.0.1"
 gem "sqlite3-ruby", :require => "sqlite3"
 
 gem "mongoid", "~> 2.0"
