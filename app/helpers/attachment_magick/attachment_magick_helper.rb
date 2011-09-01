@@ -30,13 +30,13 @@ module AttachmentMagick::AttachmentMagickHelper
   def attachment_for_view(object, partial = nil, collection=nil, use_sortable=true)
     unless object.new_record?
       unless collection.present?
-        if defined? Mongoid::Document
+        if AttachmentMagick.configuration.orms.include?("Mongoid")
           if object.class.include?(Mongoid::Document)
             collection  = object.images.order_by(:priority.asc)
           end
         end
 
-        if defined? ActiveRecord::Persistence
+        if AttachmentMagick.configuration.orms.include?("ActiveRecord")
           if object.class.include?(ActiveRecord::Persistence)
             collection  = object.images.order(:priority)
           end
