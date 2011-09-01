@@ -86,7 +86,7 @@ module AttachmentMagick
 
   module InstanceMethods
     def image_cover
-      self.images.order(:priority).first
+      self.images.order(:priority).limit(1).first
     end
   end
 end
