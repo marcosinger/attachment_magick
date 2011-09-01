@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    attachment_magick (0.3)
+    attachment_magick (0.3.1)
       dragonfly (>= 0.9.5)
       jquery-rails (>= 0.2.7)
       marcosinger-auto_html (>= 1.3.4)
