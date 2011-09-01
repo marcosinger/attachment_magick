@@ -9,4 +9,12 @@ class ArtistTest < ActiveSupport::TestCase
     assert_equal "909x230#",  Artist.style_grid_16
     assert_equal "x700>",     Artist.style_portrait
   end
+
+  def test_image_cover
+    @artist = Artist.create(:name => "Busk")
+    @image = @artist.images.create(:photo => exemple_file, :priority => 0)
+    @artist.images.create(:photo => exemple_file, :priority => 1)
+
+    assert_equal @artist.image_cover, @image
+  end
 end
