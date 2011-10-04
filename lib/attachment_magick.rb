@@ -19,8 +19,8 @@ module AttachmentMagick
   included do
     cattr_accessor :attachment_magick_default_options
     
-    if AttachmentMagick.configuration.orms.include?("Mongoid")
-      embeds_many :images, :class_name => "AttachmentMagick::MongoidImage", :polymorphic => true  if self.include?(Mongoid::Document)
+    if AttachmentMagick.configuration.orms.include?("Mongoid")      
+      embeds_many :images, :as => :imageable, :class_name => "AttachmentMagick::MongoidImage" if self.include?(Mongoid::Document)
     end
     
     if AttachmentMagick.configuration.orms.include?("ActiveRecord")

@@ -3,7 +3,7 @@ require "mime/types"
 module AttachmentMagick
   class MongoidImage
     include Mongoid::Document
-    include AutoHtml
+    # include AutoHtml
     include AutoHtmlFor
 
     before_create :set_content_type
@@ -16,13 +16,14 @@ module AttachmentMagick
     field           :source
     field           :content_type
     image_accessor  :photo
-    embedded_in     :imageable, :inverse_of => :image
+    
+    embedded_in     :imageable, :polymorphic => true
 
     auto_html_for :source => "_to_html" do
       youtube(:width => 620, :height => 465)
       vimeo(:width => 620, :height => 465)
     end
-
+    
     auto_html_for :source => "_to_image" do
       youtube_image
       vimeo_image(:size => :large)
