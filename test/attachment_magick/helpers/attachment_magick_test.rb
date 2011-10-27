@@ -32,7 +32,7 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
     assert assert_element_in(html, "a[@class='remove_image']")
     assert assert_element_in(html, "input[@id='image_id']")
 
-    html = attachment_for_view(@artist, exemple_partial)
+    html = attachment_for_view(@artist, example_partial)
     assert assert_element_in(html, "div[@class='image_caption']")
     assert assert_element_in(html, "div[@class='image_thumb']")
     assert assert_element_in(html, "img")
@@ -41,7 +41,7 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
     assert assert_element_in(html, "a[@class='remove_image']")
     assert assert_element_in(html, "input[@id='image_id']")
 
-    html = attachment_for_view(@place, exemple_partial)
+    html = attachment_for_view(@place, example_partial)
     assert assert_element_in(html, "div[@class='image_caption']")
     assert assert_element_in(html, "div[@class='image_thumb']")
     assert assert_element_in(html, "img")
@@ -55,7 +55,7 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
   end
 
   def test_attachment_for_flash
-    @artist.images.create(:photo => exemple_file)
+    @artist.images.create(:photo => example_file)
 
     html = attachment_for_flash(@artist.images.first.photo.url)
     assert assert_element_in(html, "object")

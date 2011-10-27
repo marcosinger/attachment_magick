@@ -9,37 +9,37 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
   end
 
   test "should create artist image" do
-    post :create, artist_hash.merge({ :Filedata => exemple_file })
+    post :create, artist_hash.merge({ :Filedata => example_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
 
   test "should create artist vimeo video" do
-    post :create, artist_hash.merge({ :source => exemple_vimeo })
+    post :create, artist_hash.merge({ :source => example_vimeo })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
 
   test "should create artist youtube video" do
-    post :create, artist_hash.merge({ :source => exemple_youtube })
+    post :create, artist_hash.merge({ :source => example_youtube })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
 
   test "should create work image" do
-    post :create, work_hash.merge({ :Filedata => exemple_file })
+    post :create, work_hash.merge({ :Filedata => example_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
 
   test "should create place image" do
-    post :create, place_hash.merge({ :Filedata => exemple_file })
+    post :create, place_hash.merge({ :Filedata => example_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
   end
 
   test "should update priority order" do
-    4.times{ @artist.images.create(:photo => exemple_file) }
+    4.times{ @artist.images.create(:photo => example_file) }
     @artist.save
     @artist.reload
 
@@ -70,7 +70,7 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
   end
 
   def work_hash
-    {:data_attachment => "#{@artist.class.name}_#{@artist.id}_works_#{@artist.works.last.id}", :data_partial => exemple_partial}
+    {:data_attachment => "#{@artist.class.name}_#{@artist.id}_works_#{@artist.works.last.id}", :data_partial => example_partial}
   end
 
   def place_hash

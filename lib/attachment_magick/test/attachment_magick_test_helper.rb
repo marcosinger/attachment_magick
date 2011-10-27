@@ -21,7 +21,7 @@ module AttachmentMagickTestHelper
     default_options.merge!(options)
 
     @artist = Artist.create(default_options)
-    @artist.images.create(:photo => exemple_file)
+    @artist.images.create(:photo => example_file)
     return @artist
   end
 
@@ -30,29 +30,29 @@ module AttachmentMagickTestHelper
     default_options.merge!(options)
 
     @place = Place.create(default_options)
-    @place.images.create(:photo => exemple_file)
+    @place.images.create(:photo => example_file)
     return @place
   end
 
   def create_work(artist)
     default_options = {:name => "movie", :local => "Hollywood"}
     artist.works.create(default_options)
-    artist.works.last.images.create(:photo => exemple_file)
+    artist.works.last.images.create(:photo => example_file)
   end
 
-  def exemple_file
+  def example_file
     Tempfile.new('little_girl.jpg')
   end
 
-  def exemple_youtube
+  def example_youtube
     'http://www.youtube.com/watch?v=FUe83k3t_0s'
   end
 
-  def exemple_vimeo
+  def example_vimeo
     'http://vimeo.com/14051767'
   end
 
-  def exemple_partial
+  def example_partial
     "layouts/custom_images_list"
   end
 end

@@ -12,8 +12,8 @@ class ArtistTest < ActiveSupport::TestCase
 
   def test_image_cover
     @artist = Artist.create(:name => "Busk")
-    @image = @artist.images.create(:photo => exemple_file, :priority => 0)
-    @artist.images.create(:photo => exemple_file, :priority => 1)
+    @image = @artist.images.create(:photo => example_file, :priority => 0)
+    @artist.images.create(:photo => example_file, :priority => 1)
 
     assert_equal @artist.image_cover, @image
   end
