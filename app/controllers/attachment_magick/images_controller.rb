@@ -4,25 +4,29 @@ class AttachmentMagick::ImagesController < ActionController::Base
   before_filter :load_klass
 
   def create
-    @image = @klass.images.create(:photo => params[:Filedata], :source => params[:source], :file_name => params[:source] ? "" : params[:Filedata].original_filename)
+    options = {
+      :photo      => params[:Filedata],
+      :source     => params[:source],
+      :file_name  => (params[:Filedata].original_filename unless params[:source])
+    }
+
+    @image = @klass.images.create(options)
     @klass.save
 
-    if params[:data_partial].present?
-      render :partial => params[:data_partial], :collection => [@image], :as => :image
-    else
-      render :partial => AttachmentMagick.configuration.default_add_partial, :collection => [@image], :as => :image, :locals => { :size => @klass.class.style_publisher }
-    end
+    partial_options = {
+      :collection => [@image],
+      :as         => :image,
+      :partial    => AttachmentMagick.configuration.default_add_partial
+    }
+
+    partial_options.merge!({:partial => params[:data_partial]}) if params[:data_partial].present?
+    render partial_options
   end
 
   def update_sortable
-    array_ids = params[:images]
-    hash      = {}
-
-    array_ids.each_with_index do |id, index|
-      hash.merge!( {"#{index}" => {:id => "#{id}", :priority => index}} )
-    end
-
-    @klass.images_attributes = hash
+    hsh = {}
+    params[:images].each_with_index {|id, index| hsh.merge!({"#{index}" => {:id => "#{id}", :priority => index}}) }
+    @klass.images_attributes = hsh
     @klass.save
 
     render :text => "ok"
@@ -30,6 +34,7 @@ class AttachmentMagick::ImagesController < ActionController::Base
 
   def destroy
     @klass.images.find(params[:id]).destroy
+
     render :text => "ok"
   end
 

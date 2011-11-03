@@ -12,6 +12,7 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
     post :create, artist_hash.merge({ :Filedata => example_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
+    assert  assert_element_in(response.body, "div[@class='grid_5 attachment_magick_image']")
   end
 
   test "should create artist vimeo video" do
@@ -30,6 +31,8 @@ class AttachmentMagick::ImagesControllerTest < ActionController::TestCase
     post :create, work_hash.merge({ :Filedata => example_file })
     assert_response :success
     assert  assert_element_in(response.body, "img")
+    assert  assert_element_in(response.body, "div[@class='image_caption']")
+    assert  assert_element_in(response.body, "div[@class='image_thumb']")
   end
 
   test "should create place image" do
