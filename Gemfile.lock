@@ -93,7 +93,7 @@ GEM
       tzinfo (~> 0.3.22)
     multi_json (1.0.3)
     nokogiri (1.5.0)
-    polyglot (0.3.2)
+    polyglot (0.3.3)
     rack (1.2.4)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -132,7 +132,7 @@ GEM
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
-    selenium-webdriver (2.9.1)
+    selenium-webdriver (2.10.0)
       childprocess (>= 0.2.1)
       ffi (= 1.0.9)
       json_pure
