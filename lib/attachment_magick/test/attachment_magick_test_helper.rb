@@ -1,10 +1,3 @@
-class Tempfile
-  def original_filename
-    "little_girl.jpg"
-  end
-end
-
-
 module AttachmentMagickTestHelper
   def assert_element_in(target, match)
     target = Nokogiri::HTML(target)
@@ -41,7 +34,7 @@ module AttachmentMagickTestHelper
   end
 
   def example_file
-    Tempfile.new('little_girl.jpg')
+    fixture_file_upload('little_girl.jpg', 'image/jpg')
   end
 
   def example_youtube
