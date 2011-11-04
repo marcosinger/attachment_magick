@@ -34,13 +34,16 @@ require "generators/attachment_magick/migration_generator"
 
 # Some helpers
 require "attachment_magick/test/attachment_magick_test_helper"
+require "action_dispatch/testing/test_process"
 
 class ActiveSupport::TestCase
   include AttachmentMagickTestHelper
+  include ActionDispatch::TestProcess
 end
 
 class ActionController::TestCase
   include AttachmentMagickTestHelper
+  include ActionDispatch::TestProcess
 end
 
 class ActionView::TestCase
