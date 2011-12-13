@@ -1,10 +1,10 @@
 source "http://rubygems.org"
 
-gem "rails", "3.0.11"
+gem "rails", "3.1"
 gem "capybara", ">= 1.0.1"
 gem "sqlite3-ruby", :require => "sqlite3"
 
-gem "mongoid", "2.2.4"
+gem "mongoid", "2.3.4"
 gem "bson_ext", "1.5.1"
 gem "nokogiri"
 gem "hpricot"
