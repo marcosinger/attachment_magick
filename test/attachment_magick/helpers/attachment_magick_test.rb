@@ -61,4 +61,10 @@ class AttachmentMagick::AttachmentMagickHelperTest < ActionView::TestCase
     assert assert_element_in(html, "object")
     assert assert_element_in(html, "object[@width='100'][@height='60']")
   end
+  
+  def test_should_resize_video
+    html = "<iframe width=\"450\" height=\"250\"></iframe>"
+    assert_equal(resize_video(html, 300), "<iframe width='300' height='200'></iframe>")
+  end
+      
 end

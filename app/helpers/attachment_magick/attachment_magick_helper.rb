@@ -91,4 +91,10 @@ module AttachmentMagick::AttachmentMagickHelper
       <!--<![endif]-->
     </object>".html_safe
   end
+  
+  def resize_video(html, x)
+    y = x.to_i * 2 / 3
+    html.gsub(/width=\"([0-9]+)\"/, "width='#{x}'").gsub(/height=\"([0-9]+)\"/, "height='#{y}'").html_safe
+  end
+    
 end
