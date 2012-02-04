@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "dragonfly",  ">= 0.9.5"
-  s.add_dependency "rack-cache", ">= 1.0"
+  s.add_dependency "dragonfly",  ">= 0.9.10"
+  s.add_dependency "rack-cache", ">= 1.1"
   s.add_dependency "jquery-rails", ">= 0.2.7"
   s.add_dependency "marcosinger-auto_html", ">= 1.3.6"
   s.add_dependency "marcosinger-css_parser", ">= 1.3.0"

@@ -62,7 +62,9 @@ class AttachmentMagickTest < ActiveSupport::TestCase
     column_amount = 10
     gutter        = 3
 
-    grid_system = open("http://www.spry-soft.com/grids/grid/?column_width=#{column_width}&column_amount=#{column_amount}&gutter_width=#{gutter}") { |url| Hpricot(url) }
+    #grid_system = open("http://www.spry-soft.com/grids/grid/?column_width=#{column_width}&column_amount=#{column_amount}&gutter_width=#{gutter}") { |url| Hpricot(url) }
+    grid_system = open("http://grids.heroku.com/grid?column_width=#{column_width}&column_amount=#{column_amount}&gutter_width=#{gutter}") { |url| Hpricot(url) }    
+
     grids       = Artist.send(:generate_grids, column_amount, column_width, gutter)
 
     assert_equal grids.size, column_amount + AttachmentMagick.configuration.custom_styles.styles.size
