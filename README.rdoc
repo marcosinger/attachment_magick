@@ -30,7 +30,7 @@ Create a initializer like this (config/initializers/attachment_magick_setup.rb)
       config.columns_width  = 52
       config.gutter         = 8
     # Or with our magick :)
-      config.parse_stylesheet('name_of_my_grid_file.css')
+    # config.parse_stylesheet('name_of_my_grid_file.css')
     
     config.orms = ["ActiveRecord", "Mongoid"] # Mongoid is default
     
@@ -40,16 +40,20 @@ Create a initializer like this (config/initializers/attachment_magick_setup.rb)
     end
   end
 
-* Attachment Magick is based in 960 Grid System (http://960.gs/)
+* Attachment Magick is based on 960 Grid System (http://960.gs/)
 
 Add to application.rb
 
-  config.middleware.insert 0, 'Dragonfly::Middleware', :images
-  config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-    :verbose     => true,
-    :metastore   => "file:#{Rails.root}/tmp/dragonfly/cache/meta",
-    :entitystore => "file:#{Rails.root}/tmp/dragonfly/cache/body"
-  }
+```ruby
+config.middleware.insert 0, 'Rack::Cache', {
+  :verbose     => true,
+  :metastore   => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/meta"),
+  :entitystore => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/body")
+} # unless Rails.env.production?  ## uncomment this 'unless' in Rails 3.1,
+                                  ## because it already inserts Rack::Cache in production
+
+config.middleware.insert_after 'Rack::Cache', 'Dragonfly::Middleware', :images
+```ruby
 
 == Getting started
 
@@ -62,7 +66,7 @@ Include AttachmentMagick Module to your model
   class Post
     include AttachmentMagick
 
-    ...
+    attachment_magick
   end
 
 Call this helpers in form views
