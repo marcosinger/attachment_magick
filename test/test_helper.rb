@@ -9,7 +9,6 @@ end
 
 ENV["RAILS_ENV"] = "test"
 
-require 'ruby-debug' ; Debugger.start
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require "rails/test_help"
 
