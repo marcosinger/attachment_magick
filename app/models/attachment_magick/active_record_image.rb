@@ -1,7 +1,7 @@
 module AttachmentMagick
   if AttachmentMagick.configuration.orms.include?("ActiveRecord")
     class ActiveRecordImage < ActiveRecord::Base
-      set_table_name "amagick_images"
+      self.table_name = "amagick_images"
 
       belongs_to      :imageable, :polymorphic => true
       image_accessor  :photo
