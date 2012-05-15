@@ -17,11 +17,11 @@ if defined? Mongoid::Document
 
   app.datastore = Dragonfly::DataStorage::MongoDataStore.new
   app.datastore.configure do |c|
-    c.host      = yaml_file['host']                 # defaults to localhost
-    c.port      = yaml_file['port']                 # defaults to mongo default (27017)
-    c.database  = yaml_file['database']             # defaults to 'dragonfly'
-    c.username  = yaml_file['username']             # only needed if mongo is running in auth mode
-    c.password  = yaml_file['password']             # only needed if mongo is running in auth mode
+    c.host      = yaml_file['host'] || yaml_file['uri'] # defaults to localhost
+    c.port      = yaml_file['port']                     # defaults to mongo default (27017)
+    c.database  = yaml_file['database']                 # defaults to 'dragonfly'
+    c.username  = yaml_file['username']                 # only needed if mongo is running in auth mode
+    c.password  = yaml_file['password']                 # only needed if mongo is running in auth mode
   end
 
   app.define_macro_on_include(Mongoid::Document, :image_accessor)
