@@ -14,6 +14,8 @@ if defined? Mongoid::Document
 
   mongo_yml_path  = Rails.env.test? ? "#{File.expand_path('../../../../test/dummy/config', __FILE__)}" : "config"
   yaml_file       = YAML.load_file(File.join(mongo_yml_path, 'mongoid.yml'))[Rails.env]
+  path            = File.join(mongo_yml_path, 'mongoid.yml')
+  yaml_file       = YAML.load(ERB.new(File.new(path).read).result)[Rails.env]
 
   app.datastore = Dragonfly::DataStorage::MongoDataStore.new
   app.datastore.configure do |c|

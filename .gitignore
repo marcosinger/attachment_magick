@@ -11,3 +11,4 @@ coverage/
 ._*
 *.gem
 .rvmrc
+vendor/
