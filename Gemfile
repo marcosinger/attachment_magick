@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.2.3"
+gem "rails", "5.2.6.2"
 gem "capybara", ">= 1.0.1"
 gem "sqlite3-ruby", :require => "sqlite3"
 
